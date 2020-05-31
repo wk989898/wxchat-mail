@@ -16,29 +16,9 @@ function capital(str) {
     .slice(0, 1).toUpperCase()
 }
 
-// function listFilter(list, type) {
-//   var data = []
-//   if (type === 'all') {
-//     list.forEach(function (v) {
-//       v.data.forEach(function (d) {
-//         data.push(d)
-//       })
-//     })
-//   } else {
-//     list.forEach(function (v) {
-//       if (v.addr === type)
-//         v.data.forEach(function (d) {
-//           data.push(d)
-//         })
-//     })
-//   }
-//   console.log(data);
-//   return data
-// }
 
 module.exports = {
   textFilter: textFilter,
   capital: capital,
-  // listFilter: listFilter,
   typeFilter: typeFilter
 }

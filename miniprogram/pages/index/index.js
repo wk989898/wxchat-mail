@@ -87,7 +87,7 @@ Page({
         account
       }
     }).then(res => {
-      console.log(res)
+      console.log(res.result)
       app.globalData.email.push(...res.result)
       self.setData({ mail: res.result })
       // 缓冲加载
@@ -126,41 +126,18 @@ Page({
   },
   refresh(e) {
     this.setData({TopRefresh_display:true})
-    dy = e.detail.dy
-    console.log('refresh');
+    const {now,mail}=this.data
+    const seqno = mail[0].seqno || 0
+    wx.cloud.callFunction({
+      name:'receive',
+      data:{
+        num:seqno,
+        account:now,
+        type:'up'
+      }
+    })
     setTimeout(() => {
       this.setData({ refreshing: false,TopRefresh_display:false })
     }, 1500);
   },
-  refreshPull(e) {
-    
-  }
-
-  // touchstart(e) {
-  //   let _ = { clientX, clientY, pageX, pageY } = e.changedTouches[0]
-  //   console.log(e.changedTouches[0]);
-  //   return e
-  // },
-  // touchmove(e) {
-  //   const { clientX: cX, clientY: cY, pageX: pX, pageY: pY } = e.changedTouches[0]
-  //   const x = Math.abs(cX - pageX)
-  //   const y = cY - pageY
-  //   const top = clientY === pageY ? true : false
-  //   if (!top) {
-  //     console.log('search dispaly');
-  //     const search_display = this.data.search_display
-  //     !search_display && this.setData({ search_display: true })
-  //   } else {
-  //     if (x < 10 && y > 10) {
-  //       console.log('refresh');
-  //     }
-  //   }
-  //   console.log(clientX, clientY, pageX, pageY);
-  //   return e
-
-  // },
-  // touchend(e) {
-  //   console.log('end', e.changedTouches[0]);
-  //   return e
-  // }
 })

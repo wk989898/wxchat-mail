@@ -3,17 +3,18 @@
   <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar"
     style="height:100vh;transition: .5s all ease;" />
   <view style="height: 100vh;">
-    <Search catchSidebar="openSidebar" search_display="{{search_display}}"/>
+    <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}"
+     search_display="{{search_display}}"/>
     <Top active="{{active&&!refreshing}}" />
     <Write />
     <TopRefresh wx:if="{{TopRefresh_display&&!scrolling}}" animate="{{TopRefresh_display}}"/>
 
     <scroll-view class="main" scroll-y refresher-enabled refresher-triggered="{{refreshing}}"
-    bindrefresherrefresh="refresh" bindrefresherpulling="refreshPull" 
+    bindrefresherrefresh="refresh" 
     refresher-default-style="none" refresher-threshold="20">
       <view class="type">{{filter.typeFilter(type)}}</view>
 
-      <view wx:for="{{filter.listFilter(mail,type)}}" wx:key="index" style="position: relative;">
+      <view wx:for="{{mail}}" wx:key="index" style="position: relative;">
 <!-- bg -->
         <view wx:if="{{index===idx&&!(x==0)&&type=='全部'}}" class="bg_all"></view>
         <view wx:elif="{{index===idx&&!(x==0)}}" class="bg_archive">
