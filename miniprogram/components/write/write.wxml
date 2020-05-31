@@ -1,0 +1,4 @@
+<!--components/add/add.wxml-->
+<view class="send" catchtap="write">
+  <image src="../../assets/image/add.png" alt="Email"/>
+</view>

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "Search":"/components/search/search",
+    "Sidebar":"/components/sidebar/sidebar",
+    "Top":"/components/top/top",
+    "Write":"/components/write/write",
+    "TopRefresh":"/components/top-refresh/top-refresh"
+  },
+  "enablePullDownRefresh": false,
+  "disableScroll":true
+}

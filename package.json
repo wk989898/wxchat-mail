@@ -1,0 +1,13 @@
+{
+  "name": "mail",
+  "version": "1.0.0",
+  "description": "a miniprogram alike gmail",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "author": "wk989898",
+  "license": "ISC"
+}

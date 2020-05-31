@@ -1,0 +1,5 @@
+module.exports = function getUser(account) {
+  return account.map(function (v) {
+    return v.addr
+  })
+}

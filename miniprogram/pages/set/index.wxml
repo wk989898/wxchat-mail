@@ -1,0 +1,9 @@
+<!--miniprogram/pages/set/index.wxml-->
+<view class="set">
+  <view wx:for="{{account}}" wx:key="index">
+    {{item.addr}}
+  </view>
+  <view bindtap="addAccount">
+    添加账户
+  </view>
+</view>

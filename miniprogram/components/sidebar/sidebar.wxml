@@ -1,0 +1,21 @@
+<!--components/sidebar/sidebar.wxml-->
+<view class="sidebarItem">
+  <view class="mail">Mail</view>
+  <view class="br" />
+  <view class="side_item {{type=='all'?'active':''}}" bindtap="select" data-type="all">
+    所有收件箱
+  </view>
+  <view class="br" />
+  <view>
+    <view class="side_item {{type=='main'?'active':''}}" bindtap="select" data-type="main">
+      主要
+    </view>
+    <view class="side_item {{type=='star'?'active':''}}" bindtap="select" data-type="star">
+      收藏
+    </view>
+    <view class="br" />
+    <view class="side_item {{type=='set'?'active':''}}" bindtap="select" data-type="set">
+      设置
+    </view>
+  </view>
+</view>

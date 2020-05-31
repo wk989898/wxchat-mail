@@ -1,0 +1,8 @@
+<!--miniprogram/pages/body/index.wxml-->
+<view class="content">
+  <view>{{subject}}</view>
+  <view>{{time}}</view>
+  <view>收件人:{{to}}</view>
+  <view>{{name}}</view>
+  <towxml nodes="{{article}}" style="width:100vw" />
+</view>

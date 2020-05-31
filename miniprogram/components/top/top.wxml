@@ -1,0 +1,4 @@
+<!--components/top/top.wxml-->
+<view class="init {{active?'top':'default'}}">
+top
+</view>

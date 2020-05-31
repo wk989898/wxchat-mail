@@ -1,0 +1,27 @@
+/* miniprogram/pages/mail/index.wxss */
+.write{
+  margin-top: .5rem;
+  height: 100vh;
+}
+.write form view{
+  display: flex;
+  padding: .7rem;
+  line-height: 1rem;
+  border-bottom: .05rem solid rgba(1, 1, 1, .1);
+}
+.write input{
+  flex: 1;
+  margin-left: 1rem;
+}
+.mail_content{
+  border-bottom: 0 !important;
+  padding-top: 1rem;
+}
+.send_mail{
+  margin-left: 1rem;
+}
+.send_mail image{
+  width: 1.5rem;
+  height: 1.5rem;
+  overflow: hidden;
+}

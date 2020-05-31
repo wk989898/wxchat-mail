@@ -1,0 +1,52 @@
+<Sidebar class="sidebar {{sidebar?'display':''}}" bindtype="setType"/>
+<view class="control" bindtouchmove="touchmove" bindtouchstart="touchstart">
+  <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar"
+    style="height:100vh;transition: .5s all ease;" />
+  <view style="height: 100vh;">
+    <Search catchSidebar="openSidebar" search_display="{{search_display}}"/>
+    <Top active="{{active&&!refreshing}}" />
+    <Write />
+    <TopRefresh wx:if="{{TopRefresh_display&&!scrolling}}" animate="{{TopRefresh_display}}"/>
+
+    <scroll-view class="main" scroll-y refresher-enabled refresher-triggered="{{refreshing}}"
+    bindrefresherrefresh="refresh" bindrefresherpulling="refreshPull" 
+    refresher-default-style="none" refresher-threshold="20">
+      <view class="type">{{filter.typeFilter(type)}}</view>
+
+      <view wx:for="{{filter.listFilter(mail,type)}}" wx:key="index" style="position: relative;">
+<!-- bg -->
+        <view wx:if="{{index===idx&&!(x==0)&&type=='全部'}}" class="bg_all"></view>
+        <view wx:elif="{{index===idx&&!(x==0)}}" class="bg_archive">
+          <view class="bg_1">归档</view>
+          <view class="bg_2">归档</view>
+        </view>
+        <view class="item" data-index="{{index}}"  hover-class="hover"
+        style="transform: translateX({{index===idx?x:''}});" bindlongpress="select"
+        bindtouchstart="touchStart" catchtouchmove="touchMove" bindtouchend="touchEnd">
+<!-- left -->
+          <text catchtap="select" class="active {{index===idx&&rotate?'':'rotate'}}" wx:if="{{index===idx&&active}}">✔</text>
+          <text catchtap="select" class="capital {{index===idx&&rotate?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</text>
+<!-- right -->
+          <view bindtap="getItem" data-index="{{index}}" class="right" >
+            <view>
+              <text class="name">{{item.name}}</text>
+              <text class="time">{{item.time}}</text>
+            </view>
+            <view>
+              {{filter.textFilter(item.subject)}}
+            </view>
+            <!-- <view class="body">
+              {{filter(item.body)}}
+            </view> -->
+            <image class="star" data-index="{{index}}"
+              src="{{'../../assets/image/'+(item.star?'starred.png':'star.png')}}" catchtap="store" />
+          </view>
+        </view>
+      </view>
+
+    </scroll-view>
+  </view>
+</view>
+
+
+<wxs src="./filter.wxs" module="filter"></wxs>

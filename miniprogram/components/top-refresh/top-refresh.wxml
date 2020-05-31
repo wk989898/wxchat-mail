@@ -1,0 +1,4 @@
+<!--components/top-refresh/top-refresh.wxml-->
+<view class="refresh">
+<image src="/assets/image/refresh.png" alt="refresh" class="{{animate?'animate':''}}"/>
+</view>

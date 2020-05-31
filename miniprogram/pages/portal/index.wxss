@@ -1,0 +1,8 @@
+/* miniprogram/pages/portal/index.wxss */
+.portal{
+  margin:auto;
+  height:100vh;
+  color: red;
+  font-size: 3rem;
+  transform: translateY(50%);
+}

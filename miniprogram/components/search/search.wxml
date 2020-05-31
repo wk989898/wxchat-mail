@@ -1,0 +1,12 @@
+<!--components/search/search.wxml-->
+<view class="_search">
+  <view class="head">
+    <image wx:if="{{isSearch}}" src="../../assets/image/back.png" class="menu" type="aspectFit" bindtap="back" />
+    <image src="../../assets/image/menu.png" class="menu" wx:else type="aspectFit" bindtap="openSidebar" />
+    <input type="text" placeholder="搜索邮件" style="flex:1" bindfocus="focus" />
+    <text class="circle" bindtap="selectAccount">{{now.name}}</text>
+  </view>
+  <view class="search {{isSearch?'focus':''}}" />
+</view>
+
+<wxs module="name" src="./name.wxs"></wxs>

@@ -1,0 +1,4 @@
+/* miniprogram/pages/body/index.wxss */
+.content{
+  width: 100vw;
+}

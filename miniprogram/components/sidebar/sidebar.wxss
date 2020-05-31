@@ -1,0 +1,20 @@
+/* components/sidebar/sidebar.wxss */
+.mail{
+  color: red;
+  font-size: 3rem;
+  padding: 1rem 0.5rem;
+}
+.side_item{
+  border-radius: 0 2rem 2rem 0;
+  padding: 1rem 1rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.active{
+  background-color: pink;
+  opacity: .8;
+  color: red;
+}
+.br{
+  height: 0.1rem;
+  background-color: rgba(1, 1, 1, .1);
+}

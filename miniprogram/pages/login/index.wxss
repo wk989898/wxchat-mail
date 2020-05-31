@@ -1,0 +1,62 @@
+/* miniprogram/pages/register/index.wxss */
+.rg{
+  margin: 1rem;
+}
+.rg input{
+  border-bottom: .1rem solid grey;
+  margin-right: .1rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-top: .5rem;
+}
+.rg_head{
+  font-size: 1.5rem;
+  box-sizing:content-box;
+}
+.rg_head>image{
+  height: 2rem;
+  width: 2rem;
+}
+.rg_body{
+  display: flex;
+  padding: .8rem 0;
+  border-bottom: .1rem solid rgba(1, 1, 1, .2);
+}
+.rg_body>image{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.rg_body>text{
+  flex: 1;
+  margin-left: 1rem;
+}
+.rg_input>view{
+background-color: gray;
+border: .1rem solid gray;
+}
+.rg_btn{
+  position: absolute;
+  bottom: .5rem;
+  right: 1rem;
+}
+.rg_btn>button{
+  display: inline;
+  margin-left: 1rem !important;
+  padding: .5rem;
+  border-radius: .1rem;
+  background-color: #6495ED;
+}
+.rg_pass>image{
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  right: .5rem;
+  vertical-align: middle;
+}
+.port{
+  display: flex;
+}
+.port>view{
+  line-height: 1.5rem;
+  flex: 1;
+}

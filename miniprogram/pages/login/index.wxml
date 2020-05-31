@@ -1,0 +1,69 @@
+<!--miniprogram/pages/register/index.wxml-->
+<view class="rg">
+  <view class="rg_head">
+    <image src="/assets/image/mail.png" alt="Mail" />
+    <view style="margin-bottom: 1.5rem;">{{head}}</view>
+  </view>
+  <view wx:if="{{step===0}}">
+    <block wx:for="{{options}}" wx:key="index">
+      <view class="rg_body" bindtap="register" data-index="{{index}}">
+        <image src="/assets/image/{{item.image}}" alt="Mail" />
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+  <view wx:elif="{{step===1}}">
+    <label>输入您的邮件地址</label>
+    <input type="text" focous value="{{addr}}" data-type="addr" bindinput="checkPass" />
+  </view>
+  <view wx:elif="{{step===2}}" class="rg_pass">
+    <label>密码</label>
+    <input password="{{!isPlain}}" value="{{pass}}" bindinput="checkPass" data-type="pass" />
+    <image src="/assets/image/eye.png" wx:if="{{isPlain}}" bindtap="changePlain" />
+    <image src="/assets/image/close_eye.png" wx:else bindtap="changePlain" />
+  </view>
+  <view wx:elif="{{step===3}}">
+    <label>用户名</label>
+    <input type="text" value="{{name}}" placeholder="请输入您的昵称" data-type="name" bindinput="model" />
+    <label>邮箱</label>
+    <input type="text" focous value="{{addr}}" data-type="addr" bindinput="model" />
+    <view class="rg_pass">
+      <label>密码</label>
+      <input password="{{!isPlain}}" value="{{pass}}" data-type="pass" bindinput="model" />
+      <image src="/assets/image/eye.png" wx:if="{{isPlain}}" bindtap="changePlain" />
+      <image src="/assets/image/close_eye.png" wx:else bindtap="changePlain" />
+    </view>
+    <label>服务器</label>
+    <input type="text" value="{{server}}" data-type="server" bindinput="model" />
+    <view class="port">
+      <view>
+        imap <input type="text" value="{{port1}}" data-type="port1" bindinput="model" />
+      </view>
+      <view>
+        stmp <input type="text" value="{{port2}}" data-type="port2" bindinput="model" />
+      </view>
+    </view>
+  </view>
+  <view wx:elif="{{step===4}}">正在连接...</view>
+  <view wx:elif="{{step===-1}}">
+    请输入正确的账户密码
+    <button bindtap="update" data-type="account">修改</button>
+  </view>
+  <view wx:elif="{{step===-2}}">
+    请输入正确的服务器地址
+    <button bindtap="update" data-type="server">修改</button>
+  </view>
+  <view wx:if="{{filter(step)}}" class="rg_btn">
+    <button bindtap="back">上一步</button>
+    <button bindtap="next" disabled="{{check}}">下一步</button>
+  </view>
+
+</view>
+
+<wxs module="filter">
+  module.exports=function filter(step){
+  var reg=getRegExp('1|2|3')
+  if(reg.test(step)) return true
+  return false
+  }
+</wxs>

@@ -1,0 +1,17 @@
+/* components/add/add.wxss */
+.send{
+  border-radius: 50%;
+  box-shadow: 0.1rem 0.2rem 0.2rem rgba(1, 1, 1, .2);
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  height: 4rem;
+  width: 4rem;
+  z-index: 888;
+  background: #fff;
+}
+.send>image{
+  width: 60%;
+  height: 60%;
+  margin: 20%;
+}

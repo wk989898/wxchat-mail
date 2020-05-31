@@ -1,0 +1,4 @@
+<!--miniprogram/pages/portal/index.wxml-->
+<view class="portal">
+ Mail
+</view>
