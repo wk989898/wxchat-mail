@@ -2,22 +2,20 @@
 const cloud = require('wx-server-sdk')
 const mailClient = require('node-mail-client')
 
-function format(date) {
-  var now = new Date(date)
-  var a = '/'
-  return now.getFullYear().toString() + a +
-    now.getMonth().toString().padStart(2, '0') + a +
-    now.getDay().toString().padStart(2, '0')
-}
-
 cloud.init()
-const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const { account, num, type } = event
   const { name, addr: user, pass, imap, smtp } = account
-  let client = new mailClient({ name, user, pass, imap, smtp })
+  const client = new mailClient({ name, user, pass, imap, smtp })
   client.check = 1
+  function format(date) {
+    var now = new Date(date)
+    var a = '/'
+    return now.getFullYear().toString() + a +
+      now.getMonth().toString().padStart(2, '0') + a +
+      now.getDay().toString().padStart(2, '0')
+  }
   return await client.receive(total => {
     if (type === 'down') {
       // load more
@@ -29,8 +27,8 @@ exports.main = async (event, context) => {
       return '0:0'
     }
     return `${total - num + 1}:*`
-  }).then(async result => {
-    return await result.reverse().map(v => {
+  }).then(result => {
+    return result.reverse().map(v => {
       return {
         body: v.body,
         subject: v.header.subject[0],
@@ -38,7 +36,7 @@ exports.main = async (event, context) => {
         to: v.header.to[0],
         time: format(v.attrs.date),
         star: false,
-        seqno:v.seqno
+        seqno: v.seqno
       }
     })
   })

@@ -1,8 +1,30 @@
 <!--miniprogram/pages/body/index.wxml-->
 <view class="content">
   <view>{{subject}}</view>
-  <view>{{time}}</view>
-  <view>收件人:{{to}}</view>
-  <view>{{name}}</view>
+
+  <view style="display: flex;">
+    <text>{{capital(name)}}</text>
+    <view class="c_name">
+      <view> {{textFilter(name)}}</view>{{time}}
+      <view>收件人:{{to}}</view>
+    </view>
+  </view>
   <towxml nodes="{{article}}" style="width:100vw" />
 </view>
+
+<wxs module="capital">
+  module.exports = function capital(str) {
+    var reg = getRegExp(
+      "[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]",'g');
+      return str.replace(reg, "")
+      .slice(0, 1).toUpperCase()
+  }
+</wxs>
+
+<wxs module="textFilter">
+  module.exports=function textFilter(str) {
+  if (str.length > 6)
+  return str.slice(0, 6) + '...'
+  else return str
+  }
+</wxs>

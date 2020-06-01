@@ -1,6 +1,6 @@
 // miniprogram/pages/index/index.js
 import { throttle, format } from "../../util/index";
-let dy
+let dy, long
 const width = wx.getSystemInfoSync().windowWidth
 const app = getApp()
 var clientX, clientY, pageX, pageY
@@ -33,6 +33,28 @@ Page({
     mail.star = !mail.star
     this.setData({ mail: this.data.mail })
   },
+
+  touchStart(e) {
+    const index = e.currentTarget.dataset.index
+    long = e.changedTouches[0].clientX;
+    this.setData({ idx: index })
+  },
+  touchMove(e) {
+    const x = e.changedTouches[0].clientX
+    let m = (x - long) / width * 100
+    if (m > 50) {
+      console.log('do something');
+    }
+    if (m > 10) {
+      throttle(500, () => {
+        this.setData({ x: m + '%' })
+      })
+    }
+  },
+  touchEnd() {
+    this.setData({ x: 0 })
+  },
+
   getItem(e) {
     if (this.data.sidebar) return;
     const index = e.currentTarget.dataset.index
@@ -79,7 +101,7 @@ Page({
     })
     //当前账户
     const account = self.data.now
-    wx.cloud.callFunction({
+    await wx.cloud.callFunction({
       name: 'receive',
       data: {
         // default
@@ -87,7 +109,7 @@ Page({
         account
       }
     }).then(res => {
-      console.log(res.result)
+      console.log(res)
       app.globalData.email.push(...res.result)
       self.setData({ mail: res.result })
       // 缓冲加载
@@ -125,19 +147,19 @@ Page({
 
   },
   refresh(e) {
-    this.setData({TopRefresh_display:true})
-    const {now,mail}=this.data
+    this.setData({ TopRefresh_display: true })
+    const { now, mail } = this.data
     const seqno = mail[0].seqno || 0
     wx.cloud.callFunction({
-      name:'receive',
-      data:{
-        num:seqno,
-        account:now,
-        type:'up'
+      name: 'receive',
+      data: {
+        num: seqno,
+        account: now,
+        type: 'up'
       }
     })
     setTimeout(() => {
-      this.setData({ refreshing: false,TopRefresh_display:false })
+      this.setData({ refreshing: false, TopRefresh_display: false })
     }, 1500);
   },
 })

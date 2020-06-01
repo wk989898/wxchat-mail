@@ -2,3 +2,9 @@
 .content{
   width: 100vw;
 }
+.content>view{
+  margin: .5rem;
+}
+.c_name{
+  flex: 1;
+}
