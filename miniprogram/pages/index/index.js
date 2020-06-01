@@ -11,19 +11,19 @@ Page({
     type: 'all',
     account: [],
     now: null,
-
     sidebar: false,
+    // translate and select
     x: 0,
     idx: 0,
     rotate: false,
-    // top
     active: false,
-    refreshing: false,
-    scrolling: false,
+    // top display
     TopRefresh_display: false,
-    total: 0,
-    //refresh
-    search_display: false
+    // refresh
+    refreshing: false,
+    search_display: false,
+    // scroll
+    scroll_top:10
   },
   store(e) {
     if (this.data.sidebar) return;
@@ -35,24 +35,28 @@ Page({
   },
 
   touchStart(e) {
+    console.log('touchStart');
     const index = e.currentTarget.dataset.index
     long = e.changedTouches[0].clientX;
     this.setData({ idx: index })
   },
   touchMove(e) {
-    const x = e.changedTouches[0].clientX
-    let m = (x - long) / width * 100
-    if (m > 50) {
+    const clientX = e.changedTouches[0].clientX
+    const x=this.data.x
+    const m = (clientX - long) / width * 100
+    if (Math.abs(m) > 50) {
       console.log('do something');
     }
-    if (m > 10) {
-      throttle(500, () => {
+    if (x!==0||Math.abs(m) > 10)
+      throttle(50, () => {
         this.setData({ x: m + '%' })
       })
-    }
   },
   touchEnd() {
-    this.setData({ x: 0 })
+    console.log('touchEnd');
+    setTimeout(() => {
+      this.setData({ x: 0 })
+    }, 50);
   },
 
   getItem(e) {
@@ -77,9 +81,6 @@ Page({
       console.log('close Sidebar');
       this.setData({ sidebar: false })
     }
-  },
-  scroll(e) {
-    console.log(e);
   },
   // rotate
   select() {
@@ -109,7 +110,6 @@ Page({
         account
       }
     }).then(res => {
-      console.log(res)
       app.globalData.email.push(...res.result)
       self.setData({ mail: res.result })
       // 缓冲加载
@@ -123,7 +123,6 @@ Page({
         }
       }).then(r => {
         const mail = res.result.concat(r.result)
-        console.log(mail)
         self.setData({ mail })
       })
     })
@@ -157,6 +156,10 @@ Page({
         account: now,
         type: 'up'
       }
+    }).then(res => {
+      if (res.result === null) return console.log('没有新的邮件');
+      mail.unshift(...res.result)
+      this.setData({ mail })
     })
     setTimeout(() => {
       this.setData({ refreshing: false, TopRefresh_display: false })

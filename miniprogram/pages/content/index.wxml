@@ -1,11 +1,11 @@
 <!--miniprogram/pages/body/index.wxml-->
 <view class="content">
-  <view>{{subject}}</view>
+  <view class="c_subject">{{subject}}</view>
 
-  <view style="display: flex;">
+  <view class="c_main">
     <text>{{capital(name)}}</text>
     <view class="c_name">
-      <view> {{textFilter(name)}}</view>{{time}}
+      <view> {{textFilter(name)}}</view><text>{{time}}</text> 
       <view>收件人:{{to}}</view>
     </view>
   </view>

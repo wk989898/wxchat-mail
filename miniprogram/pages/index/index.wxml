@@ -2,22 +2,23 @@
 <view class="control" bindtouchmove="touchmove" bindtouchstart="touchstart">
   <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar"
     style="height:100vh;transition: .5s all ease;" />
-  <view style="height: 100vh;">
+  <view >
     <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}"
      search_display="{{search_display}}"/>
     <Top active="{{active&&!refreshing}}" />
     <Write />
-    <TopRefresh wx:if="{{TopRefresh_display&&!scrolling}}" animate="{{TopRefresh_display}}"/>
+    <TopRefresh wx:if="{{TopRefresh_display&&(x==0)}}" animate="{{TopRefresh_display}}"/>
 
     <scroll-view class="main" scroll-y refresher-enabled refresher-triggered="{{refreshing}}"
-    bindrefresherrefresh="refresh" 
+    bindrefresherrefresh="refresh" scroll-top="{{scroll_top}}"
     refresher-default-style="none" refresher-threshold="20">
+<!-- test -->
+  <view style="min-height: 100%">
       <view class="type">{{filter.typeFilter(type)}}</view>
 
-      <view wx:for="{{mail}}" wx:key="index" style="position: relative;">
+      <view wx:for="{{mail}}" wx:key="index" style="position: relative;" class="{{index===idx&&!(x==0)?'mail_scroll':''}}">
 <!-- bg -->
-        <view wx:if="{{index===idx&&!(x==0)&&type=='全部'}}" class="bg_all"></view>
-        <view wx:elif="{{index===idx&&!(x==0)}}" class="bg_archive">
+        <view wx:if="{{index===idx&&!(x==0)}}" class="bg_archive">
           <view class="bg_1">归档</view>
           <view class="bg_2">归档</view>
         </view>
@@ -44,6 +45,8 @@
           </view>
         </view>
       </view>
+
+</view>
 
     </scroll-view>
   </view>

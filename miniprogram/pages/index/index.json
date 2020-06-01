@@ -6,6 +6,5 @@
     "Write":"/components/write/write",
     "TopRefresh":"/components/top-refresh/top-refresh"
   },
-  "enablePullDownRefresh": false,
-  "disableScroll":true
+  "enablePullDownRefresh": false
 }

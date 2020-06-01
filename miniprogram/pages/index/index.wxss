@@ -1,9 +1,6 @@
 /* miniprogram/pages/index/index.wxss */
 .main{
   overflow: hidden;
-  /* margin-top: 3rem; */
-  height: 1000px;
-  /* min-height: 100%; */
 }
 .item{
   padding: 1rem 1rem;
@@ -15,12 +12,14 @@
   background-color: #fff;
   z-index: 99;
 }
-.item:hover{
-  background: #E1FFFF	;
-}
 .type{
   font-size: 1rem;
   padding: 1rem 1rem 0.5rem;
+}
+.mail_scroll{
+  box-shadow: 0 0.1rem .05rem grey;
+  transform: scale(1.05);
+  z-index: 900;
 }
 .item>text{
   width: 3rem;
@@ -120,11 +119,4 @@
   content: '';
   clear: both;
   display: table;
-}
-.bg_all{
-  position: absolute;
-  background: red;
-  width: 100%;
-  height: 100%;
-  z-index: -999;
 }

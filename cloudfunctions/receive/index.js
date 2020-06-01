@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
   return await client.receive(total => {
     if (type === 'down') {
       // load more
-      return `${num - 2}:${num}`
+      return `${num - 4}:${num}`
     } else if (type === 'up') {
       // pull refresh
       const t = total - num
@@ -39,5 +39,5 @@ exports.main = async (event, context) => {
         seqno: v.seqno
       }
     })
-  })
+  }).catch(e=>null)
 }
