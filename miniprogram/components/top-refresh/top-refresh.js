@@ -1,14 +1,16 @@
 // components/top-refresh/top-refresh.js
 Component({
   properties: {
-    animate: {
-      type: Boolean,
-      value: false
+    refresh_position: {
+      type: Number,
+      value: 0
     }
   },
   data: {
   },
-  methods: {
+  observers: {
+  },
+  methods:{
   },
   options: {
     styleIsolation: 'isolated'

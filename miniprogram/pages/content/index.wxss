@@ -3,26 +3,32 @@
   width: 100vw;
 }
 .c_subject{
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem .5rem;
 }
 .c_main{
   display: flex;
+  margin-bottom: 1rem;
 }
 .c_main>text{
   border-radius: 50%;
   background-color: purple;
   color: white;
   text-align: center;
-  font-size: 1rem;
-  height: 2rem;
-  width: 2rem;
-  line-height: 2rem;
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  line-height: 3rem;
   text-align: center;
+  margin: 1rem;
 }
 .content>view{
   margin: .5rem;
 }
 .c_name{
   flex: 1;
+}
+.c_body{
+  width:100vw;
+  margin: 0 .5rem;
 }

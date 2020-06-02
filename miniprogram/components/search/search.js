@@ -3,10 +3,7 @@ const app=getApp()
 
 Component({
   properties: {
-    search_display:{
-      type:Boolean,
-      value:false
-    },
+    search_display:Boolean,
     account:{
       type:Array,
     },

@@ -2,10 +2,10 @@
 const app = getApp();
 Page({
   data: {
-    subject: null,
-    name: null,
-    to: null,
-    time: null,
+    subject: '',
+    name: '',
+    to: '',
+    time: '',
     isLoading: true,
     article: null
   },

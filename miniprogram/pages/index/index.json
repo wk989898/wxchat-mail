@@ -6,5 +6,6 @@
     "Write":"/components/write/write",
     "TopRefresh":"/components/top-refresh/top-refresh"
   },
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance":75  
 }

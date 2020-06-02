@@ -1,19 +1,17 @@
 <Sidebar class="sidebar {{sidebar?'display':''}}" bindtype="setType"/>
-<view class="control" bindtouchmove="touchmove" bindtouchstart="touchstart">
+<view class="control" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
   <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar"
     style="height:100vh;transition: .5s all ease;" />
   <view >
     <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}"
-     search_display="{{search_display}}"/>
-    <Top active="{{active&&!refreshing}}" />
-    <Write />
-    <TopRefresh wx:if="{{TopRefresh_display&&(x==0)}}" animate="{{TopRefresh_display}}"/>
+      search_display="{{search_display}}"/>
+    <view wx:if="{{search_display}}" style="height:3.3rem;" />
 
-    <scroll-view class="main" scroll-y refresher-enabled refresher-triggered="{{refreshing}}"
-    bindrefresherrefresh="refresh" scroll-top="{{scroll_top}}"
-    refresher-default-style="none" refresher-threshold="20">
-<!-- test -->
-  <view style="min-height: 100%">
+    <Top active="{{active}}" />
+    <Write />
+    <!-- scroll -->
+    <TopRefresh  refresh_position="{{refresh_position}}" wx:if="{{refresh_position}}"/>
+    <view class="main">
       <view class="type">{{filter.typeFilter(type)}}</view>
 
       <view wx:for="{{mail}}" wx:key="index" style="position: relative;" class="{{index===idx&&!(x==0)?'mail_scroll':''}}">
@@ -24,7 +22,7 @@
         </view>
         <view class="item" data-index="{{index}}"  hover-class="hover"
         style="transform: translateX({{index===idx?x:''}});" bindlongpress="select"
-        bindtouchstart="touchStart" catchtouchmove="touchMove" bindtouchend="touchEnd">
+        bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
 <!-- left -->
           <text catchtap="select" class="active {{index===idx&&rotate?'':'rotate'}}" wx:if="{{index===idx&&active}}">✔</text>
           <text catchtap="select" class="capital {{index===idx&&rotate?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</text>
@@ -46,9 +44,7 @@
         </view>
       </view>
 
-</view>
-
-    </scroll-view>
+    </view>
   </view>
 </view>
 

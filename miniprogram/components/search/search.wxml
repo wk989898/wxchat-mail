@@ -1,5 +1,5 @@
 <!--components/search/search.wxml-->
-<view class="_search">
+<view class="_search" style="{{search_display?'position:fixed':''}}">
   <view class="head">
     <image wx:if="{{isSearch}}" src="../../assets/image/back.png" class="menu" type="aspectFit" bindtap="back" />
     <image src="../../assets/image/menu.png" class="menu" wx:else type="aspectFit" bindtap="openSidebar" />

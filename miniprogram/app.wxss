@@ -1,9 +1,9 @@
 /**app.wxss**/
-.h2w__script{
+.h2w__script,.h2w__style{
   display: none;
 }
 .h2w-light .h2w__th, .h2w-light .h2w__td{
-  border: none;
+  border: none !important;
 }
 
 

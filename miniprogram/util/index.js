@@ -3,14 +3,16 @@
  * @param {number} time 
  * @param {Function} cb 
  */
-let timer, _throttle = true
-export function throttle(time, cb) {
-  if (_throttle) {
-    timer = setTimeout(() => {
+export function throttle() {
+  let timer, _throttle = true
+  return function (time, cb) {
+    if (_throttle) {
+      _throttle = false
+      timer = setTimeout(() => {
+        _throttle = true
+      }, time)
       cb()
-      _throttle = true
-    }, time);
-    _throttle = false
+    }
   }
 }
 export function format(date) {

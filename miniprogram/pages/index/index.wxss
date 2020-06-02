@@ -1,6 +1,15 @@
 /* miniprogram/pages/index/index.wxss */
+.control{
+  position: relative;
+  /* height: 100%; */
+  width: 100%;
+  z-index: 99;
+  overflow: scroll;
+  overflow-y: auto;
+}
 .main{
   overflow: hidden;
+  /* margin-top: 3rem; */
 }
 .item{
   padding: 1rem 1rem;
@@ -91,12 +100,7 @@
   filter:opacity(.8);
   z-index: 995;
 }
-.control{
-  position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 99;
-}
+
 .bg_archive{
   position: absolute;
   background: green;
@@ -119,4 +123,33 @@
   content: '';
   clear: both;
   display: table;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* test */
+.scroll_refresh{
+  position: absolute;
+  height: 200px;
+}
+.refresh {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  left: 50%;
+  margin-top: 3rem;
+  z-index: 888;
+}
+.refresh>image {
+  width: 100%;
+  height: 100%;
 }

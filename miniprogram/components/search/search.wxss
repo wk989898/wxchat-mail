@@ -1,13 +1,17 @@
 /* components/search/search.wxss */
 ._search{
-  /* position: fixed; */
+  /* position: absolute; */
   margin-top: .5rem;
+  z-index: 200;
+  width: 100%;
+  transition: all .5s;
 }
 .head{
   display:flex;
   border-radius: 0.4rem;
   margin: 0.1rem 1rem;
   padding: 0.4rem 0.6rem;
+  background: #fff;
   box-sizing: border-box;
   box-shadow: 0.1rem 0 0.1rem rgba(1, 1, 1, 0.1),-0.1rem 0 0.1rem rgba(1, 1, 1, 0.1),
   0 -0.1rem  0.1rem rgba(1, 1, 1, 0.1),0 0.1rem  0.1rem rgba(1, 1, 1, 0.1);
