@@ -3,7 +3,7 @@ Component({
   properties: {
   },
   data: {
-    type: 'all'
+    type: 'main'
   },
   methods: {
     select(e) {

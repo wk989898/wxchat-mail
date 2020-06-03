@@ -1,13 +1,12 @@
 /* components/top/top.wxss */
 .top{
-  height: 2rem;
-  padding: 0.5rem 1.6rem;
+  height: 3.3rem;
 }
 .default{
   height: 0;
 }
 .init{
-  width: 100%;
+  width: 100vw;
   background: white;
   position: fixed;
   top: 0;
@@ -15,4 +14,17 @@
   box-shadow: 0 .1rem .1rem rgba(1, 1, 1, .1);
   overflow: hidden;
   transition: all .2s ;
+  padding: auto 1rem;
+}
+.init>image{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin: .5rem 1rem;
+}
+.init :first-child{
+  float: left;
+}
+.init :last-child{
+  float: right;
 }

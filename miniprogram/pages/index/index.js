@@ -12,22 +12,19 @@ var Top = 0, refreshTop
 Page({
   data: {
     mail: [],
-    type: 'all',
+    type: 'main',
     account: [],
     now: null,
     sidebar: false,
     // translate and select
     x: 0,
-    idx: 0,
-    rotate: false,
-    active: false,
+    selectList: [],
+    rotate: [],
     // top display
     refresh_position: 0,
     // refresh
     refreshing: false,
     search_display: false,
-    // scroll
-    scroll_top: 10
   },
   store(e) {
     if (this.data.sidebar) return;
@@ -41,7 +38,6 @@ Page({
   touchStart(e) {
     const index = e.currentTarget.dataset.index
     long = e.changedTouches[0].clientX;
-    this.setData({ idx: index })
   },
   touchMove(e) {
     const clientX = e.changedTouches[0].clientX
@@ -77,6 +73,11 @@ Page({
       fail: console.error
     })
   },
+  removeItem() {
+    let { selectList, mail } = this.data
+    mail = mail.filter((v, i) => !selectList[i])
+    this.setData({ mail, selectList: [], rotate: [] })
+  },
   // sidebar
   openSidebar() {
     console.log('open Sidebar');
@@ -90,24 +91,31 @@ Page({
   },
   setType(e) {
     const t = e.detail
-    let mail = this.data.mail
     this.setData({ type: t, sidebar: false })
   },
   // rotate
-  select() {
-    this.setData({ rotate: !this.data.rotate })
+  select(e) {
+    const index = e.currentTarget.dataset.index
+    const { rotate, selectList } = this.data
+    selectList[index] = !selectList[index]
+    rotate[index] = !rotate[index]
+    this.setData({ rotate })
     setTimeout(() => {
-      this.setData({ active: !this.data.active })
-    }, 300);
+      this.setData({ selectList })
+    }, 300)
   },
   // onload
   onLoad: async function (options) {
+    const oa = options.account
     var self = this
     await wx.cloud.callFunction({
       name: 'account'
     }).then(({ result }) => {
-      // default 
-      self.setData({ account: result, now: result[0] })
+      let now = result[0]
+      if (oa) {
+        now = result.find(v => v.addr = oa)
+      }
+      self.setData({ account: result, now })
       app.globalData.account = result
     })
     //当前账户
@@ -137,8 +145,6 @@ Page({
       })
     })
   },
-
-
   onReady: function () {
 
   },
@@ -151,6 +157,7 @@ Page({
   onUnload: function () {
 
   },
+  // 下拉刷新 上拉搜索
   refresh() {
     const { now, mail } = this.data
     const seqno = mail[0].seqno

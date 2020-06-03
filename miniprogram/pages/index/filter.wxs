@@ -11,14 +11,20 @@ function textFilter(str) {
 }
 
 function capital(str) {
-  var reg=getRegExp("[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]",'g')
+  var reg = getRegExp("[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]", 'g')
   return str.replace(reg, "")
     .slice(0, 1).toUpperCase()
 }
 
+function Top(list) {
+  return list.some(function (v) {
+    return v
+  })
+}
 
 module.exports = {
   textFilter: textFilter,
   capital: capital,
-  typeFilter: typeFilter
+  typeFilter: typeFilter,
+  Top:Top
 }

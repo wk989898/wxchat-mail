@@ -78,7 +78,7 @@ Page({
           }
           console.log('success login');
           wx.redirectTo({
-            url: '/pages/index/index',
+            url: `/pages/index/index?account=${addr}`,
             fail: console.error
           })
         }).catch((e) => {

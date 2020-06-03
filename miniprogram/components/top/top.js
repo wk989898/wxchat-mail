@@ -10,7 +10,12 @@ Component({
 
   },
   methods: {
-
+    back(){
+      this.setData({active:false})
+    },
+    delete(){
+      this.triggerEvent('delete')
+    }
   },
   options: {
     styleIsolation: 'isolated'

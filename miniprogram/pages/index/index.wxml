@@ -7,7 +7,7 @@
       search_display="{{search_display}}"/>
     <view wx:if="{{search_display}}" style="height:3.3rem;" />
 
-    <Top active="{{active}}" />
+    <Top active="{{filter.Top(rotate)}}" binddelete="removeItem"/>
     <Write />
     <!-- scroll -->
     <TopRefresh  refresh_position="{{refresh_position}}" wx:if="{{refresh_position}}"/>
@@ -24,8 +24,10 @@
         style="transform: translateX({{index===idx?x:''}});" bindlongpress="select"
         bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
 <!-- left -->
-          <text catchtap="select" class="active {{index===idx&&rotate?'':'rotate'}}" wx:if="{{index===idx&&active}}">✔</text>
-          <text catchtap="select" class="capital {{index===idx&&rotate?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</text>
+        <view class="i_select" catchtap="select" data-index="{{index}}">
+          <text  class="active {{rotate[index]?'':'rotate'}}" wx:if="{{selectList[index]}}">√</text>
+          <text  class="capital {{rotate[index]?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</text>
+        </view>
 <!-- right -->
           <view bindtap="getItem" data-index="{{index}}" class="right" >
             <view>

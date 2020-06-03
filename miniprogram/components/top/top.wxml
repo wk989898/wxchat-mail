@@ -1,4 +1,5 @@
 <!--components/top/top.wxml-->
 <view class="init {{active?'top':'default'}}">
-top
+<image src="/assets/image/_back.png" catchtap="back"/>
+<image src="/assets/image/delete.png" catchtap="delete"/>
 </view>
