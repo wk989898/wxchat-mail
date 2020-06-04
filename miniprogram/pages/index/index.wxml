@@ -4,7 +4,7 @@
     style="height:100vh;transition: .5s all ease;" />
   <view >
     <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}"
-      search_display="{{search_display}}"/>
+      search_display="{{search_display}}" bindchangeAccount="changeNow"/>
     <view wx:if="{{search_display}}" style="height:3.3rem;" />
 
     <Top active="{{filter.Top(rotate)}}" binddelete="removeItem"/>

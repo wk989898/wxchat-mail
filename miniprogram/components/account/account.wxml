@@ -1,0 +1,12 @@
+<!--components/account/account.wxml-->
+<view class="ac_bg" catchtap="back">
+</view>
+<view class="ac_body">
+  <view wx:for="{{account}}" wx:key="index" class="ac_item" catchtap="select" data-index="{{index}}">
+    <text class="ac_head">{{item.name}}</text>
+    <view>
+      <view>{{item.name}}</view> 
+      <view>{{item.addr}}</view> 
+    </view>
+  </view>
+</view>

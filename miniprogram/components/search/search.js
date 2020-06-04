@@ -1,31 +1,34 @@
 // components/search/search.js
-const app=getApp()
-
 Component({
   properties: {
-    search_display:Boolean,
-    account:{
-      type:Array,
-    },
-    now:{
-      type:Object
-    }
+    search_display: Boolean,
+    now: Object
   },
   data: {
-    isSearch:false,
+    isSearch: false,
+    account: false
   },
   methods: {
-    openSidebar(){
+    openSidebar() {
       this.triggerEvent('Sidebar')
     },
-    focus(){
-      this.setData({isSearch:true})
+    focus() {
+      this.setData({ isSearch: true })
     },
-    back(){
-      this.setData({isSearch:false})
+    back() {
+      this.setData({ isSearch: false })
     },
-    selectAccount(){
-      console.log('select');
+    selectAccount() {
+      this.setData({ account: true })
+    },
+    changeAccount(e) {
+      const { addr } = e.detail
+      if (addr) {
+        this.triggerEvent('changeAccount', { addr })
+      }
+      this.setData({ account: false })
+    },
+    move() {
     }
   },
   options: {

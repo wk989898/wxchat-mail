@@ -1,0 +1,43 @@
+/* components/account/account.wxss */
+.ac_bg{
+  position: absolute;
+  top:0;
+  bottom: 0; 
+  height: 100vh;
+  width: 100vw;
+  background-color: #222 ;
+  filter:opacity(.8);
+  z-index: 995;
+}
+.ac_body{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 1.5rem;
+  /* width: 80%; */
+  padding: 1rem;
+  border-radius: .5rem;
+  background: #fff;
+  z-index: 996;
+}
+.ac_item{
+  display: flex;
+  padding-bottom: .5rem;
+  border-bottom: .05rem solid gray;
+}
+.ac_item>view{
+  /* flex: 1; */
+  margin-left: 1rem;
+}
+.ac_head{
+  display: block;
+  height: 3rem;
+  width: 3rem;
+  line-height: 3rem;
+  border-radius: 50%;
+  background-color: purple;
+  color: white;
+  /* overflow: hidden; */
+  font-size: 1.5rem;
+  text-align: center;
+}

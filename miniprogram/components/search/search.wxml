@@ -8,5 +8,4 @@
   </view>
   <view class="search {{isSearch?'focus':''}}" />
 </view>
-
-<wxs module="name" src="./name.wxs"></wxs>
+<Account wx:if="{{account}}" bindaccount="changeAccount" catchtouchmove="move"/>

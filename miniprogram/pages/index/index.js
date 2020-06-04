@@ -29,10 +29,19 @@ Page({
   store(e) {
     if (this.data.sidebar) return;
     const index = e.currentTarget.dataset.index
-    console.log();
     let mail = this.data.mail[index]
     mail.star = !mail.star
     this.setData({ mail: this.data.mail })
+  },
+  changeNow(e) {
+    const { addr } = e.detail
+    console.log(addr)
+    if (addr) {
+      wx.reLaunch({
+        url: `/pages/index/index?account=${addr}`,
+        error:console.error
+      })
+    }
   },
   // Move
   touchStart(e) {

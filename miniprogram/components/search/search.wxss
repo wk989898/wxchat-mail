@@ -30,7 +30,7 @@
   border-radius: 50%;
   background-color: purple;
   color: white;
-  text-align: center;
+  overflow: hidden;
   font-size: 1rem;
   height: 2rem;
   width: 2rem;
