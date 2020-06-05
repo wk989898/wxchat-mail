@@ -15,7 +15,13 @@ function capital(str) {
   return str.replace(reg, "")
     .slice(0, 1).toUpperCase()
 }
-
+function type(mail, type) {
+  if (type === 'star')
+    mail = mail.filter(function (v) {
+      return v[type]
+    })
+  return mail
+}
 function Top(list) {
   return list.some(function (v) {
     return v
@@ -26,5 +32,6 @@ module.exports = {
   textFilter: textFilter,
   capital: capital,
   typeFilter: typeFilter,
-  Top:Top
+  Top: Top,
+  type: type
 }

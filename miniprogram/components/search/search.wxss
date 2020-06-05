@@ -42,7 +42,7 @@
   position: absolute;
   width: 100vw;
   height: 0;
-  transition: .8s height;
+  transition: .4s height;
   z-index: 888;
   background-color: #fff;
 }

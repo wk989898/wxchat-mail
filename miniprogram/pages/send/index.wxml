@@ -7,22 +7,25 @@
   <form action="">
     <view>
       <label for="from">发件人</label>
-      <input  name="from" value="{{from}}"/>
+      <input name="from" value="{{from}}" />
       <picker range="{{getUser(account)}}" bindchange="picker" value="{{account_index}}" mode="selector">
-        <view style="display: inline;border-bottom: 0;"><icon type="search"/></view>
+        <view style="display: inline;border-bottom: 0;">
+          <icon type="search" />
+        </view>
       </picker>
     </view>
     <view>
       <label for="to">收件人</label>
-      <input  name="to" data-type="to" bindinput="entry"/>
+      <input name="to" data-type="to" value="{{to}}" bindinput="entry" />
     </view>
     <view>
-      <label for="subject">主题</label>
-      <input  name="subject"  data-type="subject" bindinput="entry"/></view>
+      <input name="subject" style="margin-left:.5rem" 
+      data-type="subject" placeholder="主题" value="{{subject}}" bindinput="entry" />
+    </view>
     <view class="mail_content">
-      <editor  name="content" placeholder="撰写电子邮件" focus data-type="content" bindinput="entry"/>
+      <editor name="content" placeholder="撰写电子邮件" focus data-type="content" bindinput="entry" />
     </view>
   </form>
 </view>
 
-<wxs module="getUser" src="./getUser.wxs"  />
+<wxs module="getUser" src="./getUser.wxs" />

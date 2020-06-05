@@ -29,11 +29,13 @@ exports.main = async (event, context) => {
     return `${total - num + 1}:*`
   }).then(result => {
     return result.reverse().map(v => {
+      const [name,from]=v.header.from[0].replace(/\>$/,'').split(' <')
       return {
+        name,
+        from,
         body: v.body,
         subject: v.header.subject[0],
-        name: v.header.from[0].split(' <')[0],
-        to: v.header.to[0],
+        to: v.header.to[0].replace(/^[\s\S]*\<|\>$/g,''),
         time: format(v.attrs.date),
         star: false,
         seqno: v.seqno

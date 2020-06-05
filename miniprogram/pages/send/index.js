@@ -43,8 +43,10 @@ Page({
       this.setData({ [type]: detail.value })
   },
   onLoad: function (options) {
+    let { to = '', subject } = options
+    subject = subject ? 'Re: ' + subject : subject
     const account = app.globalData.account
-    this.setData({ account })
+    this.setData({ account, to, subject })
     this.picker()
   },
   onUnload: function () {

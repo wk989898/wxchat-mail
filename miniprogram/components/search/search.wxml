@@ -6,6 +6,6 @@
     <input type="text" placeholder="搜索邮件" style="flex:1" bindfocus="focus" />
     <text class="circle" bindtap="selectAccount">{{now.name}}</text>
   </view>
-  <view class="search {{isSearch?'focus':''}}" />
+  <view class="search {{isSearch?'focus':''}}" catchtouchmove="move"/>
 </view>
 <Account wx:if="{{account}}" bindaccount="changeAccount" catchtouchmove="move"/>

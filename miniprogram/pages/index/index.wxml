@@ -1,6 +1,6 @@
-<Sidebar class="sidebar {{sidebar?'display':''}}" bindtype="setType"/>
+<Sidebar class="sidebar {{sidebar?'display':''}}" bindtype="setType" catchtouchmove="move" />
 <view class="control" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
-  <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar"
+  <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar" catchtouchmove="move"
     style="height:100vh;transition: .5s all ease;" />
   <view >
     <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}"
@@ -14,11 +14,11 @@
     <view class="main">
       <view class="type">{{filter.typeFilter(type)}}</view>
 
-      <view wx:for="{{mail}}" wx:key="index" style="position: relative;" class="{{index===idx&&!(x==0)?'mail_scroll':''}}">
+      <view wx:for="{{filter.type(mail,type)}}" wx:key="index" style="position: relative;" class="{{index===idx&&!(x==0)?'mail_scroll':''}}">
 <!-- bg -->
         <view wx:if="{{index===idx&&!(x==0)}}" class="bg_archive">
-          <view class="bg_1">归档</view>
-          <view class="bg_2">归档</view>
+          <view class="bg_1">删除</view>
+          <view class="bg_2">删除</view>
         </view>
         <view class="item" data-index="{{index}}"  hover-class="hover"
         style="transform: translateX({{index===idx?x:''}});" bindlongpress="select"

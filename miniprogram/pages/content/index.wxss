@@ -22,6 +22,12 @@
   text-align: center;
   margin: 1rem;
 }
+.c_name>text{
+  font-size: .6rem;
+}
+.c_name{
+  font-weight: 200;
+}
 .content>view{
   margin: .5rem;
 }
@@ -30,5 +36,18 @@
 }
 .c_body{
   width:100vw;
-  margin: 0 .5rem;
+}
+.c_re{
+  display: flex;
+  align-content: space-between;
+}
+.c_re>view{
+  flex: 1;
+  border: .05rem solid gray;
+  border-radius: .5rem;
+  background-color: #fff;
+  color: #707070;
+  padding: .5rem;
+  text-align: center;
+  margin: .5rem;
 }

@@ -5,12 +5,19 @@
   <view class="c_main">
     <text>{{capital(name)}}</text>
     <view class="c_name">
-      <view> {{textFilter(name)}}</view><text> {{time}}</text> 
-      <view>收件人:{{to}}</view>
+      <view style="font-weight: 300;"> {{textFilter(name)}}</view><text> {{time}}</text> 
+      <view style="font-size: .8rem;">收件人:{{to}}</view>
     </view>
   </view>
   <view  class="c_body"><towxml nodes="{{article}}" /></view>
-  
+  <view class="c_re">
+    <view bindtap="reply">
+      回复
+    </view>
+    <view bindtap="relay">
+      转发
+    </view>
+  </view>
 </view>
 
 <wxs module="capital">

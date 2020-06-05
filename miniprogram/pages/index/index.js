@@ -4,6 +4,7 @@ const throttle1 = throttle()
 const throttle2 = throttle()
 var throttle3 = throttle()
 var throttle4 = throttle()
+var throttle5 = throttle()
 const width = wx.getSystemInfoSync().windowWidth
 const app = getApp()
 var clientY, pageY, long
@@ -18,8 +19,11 @@ Page({
     sidebar: false,
     // translate and select
     x: 0,
+    idx: 0,
     selectList: [],
     rotate: [],
+    remove: false,
+    translate: false,
     // top display
     refresh_position: 0,
     // refresh
@@ -27,11 +31,11 @@ Page({
     search_display: false,
   },
   store(e) {
-    if (this.data.sidebar) return;
     const index = e.currentTarget.dataset.index
-    let mail = this.data.mail[index]
-    mail.star = !mail.star
-    this.setData({ mail: this.data.mail })
+    const { mail } = this.data
+    const m = this.data.mail[index]
+    m.star = !m.star
+    this.setData({ mail })
   },
   changeNow(e) {
     const { addr } = e.detail
@@ -39,38 +43,44 @@ Page({
     if (addr) {
       wx.reLaunch({
         url: `/pages/index/index?account=${addr}`,
-        error:console.error
+        error: console.error
       })
     }
   },
   // Move
   touchStart(e) {
     const index = e.currentTarget.dataset.index
-    long = e.changedTouches[0].clientX;
+    long = e.changedTouches[0].clientX
+    this.setData({ idx: index })
   },
   touchMove(e) {
+    const { x, remove, idx, refreshing } = this.data
+    if (refreshing) return;
     const clientX = e.changedTouches[0].clientX
-    const x = this.data.x
     const m = (clientX - long) / width * 100
-    if (Math.abs(m) > 50) {
-      console.log('do something');
+    if (Math.abs(m) > 60) {
+      if (remove) return;
+      this.setData({ remove: true })
     }
     if (x !== 0 || Math.abs(m) > 10) {
-      const rotate = this.data.rotate
-      if (rotate) this.select()
-      // throttle1(50, () => {
-      this.setData({ x: m + '%' })
-      // })
+      const rotate = this.data.rotate[idx]
+      if (rotate) this.select(e)
+      throttle1(50, () => {
+        this.setData({ x: m + '%', translate: true })
+      })
     }
   },
   touchEnd() {
+    const { remove, mail, idx } = this.data
+    if (remove) mail.splice(idx, 1)
     setTimeout(() => {
-      this.setData({ x: 0 })
+      this.setData({ x: 0, remove: false, translate: false, mail })
     }, 50);
   },
 
   getItem(e) {
-    if (this.data.sidebar) return;
+    // if (this.data.sidebar) return;
+    console.log(e);
     const index = e.currentTarget.dataset.index
     const mail = this.data.mail
     console.log('getItem', index);
@@ -98,6 +108,7 @@ Page({
       this.setData({ sidebar: false })
     }
   },
+  // 分类
   setType(e) {
     const t = e.detail
     this.setData({ type: t, sidebar: false })
@@ -167,32 +178,21 @@ Page({
 
   },
   // 下拉刷新 上拉搜索
-  refresh() {
-    const { now, mail } = this.data
-    const seqno = mail[0].seqno
-    wx.cloud.callFunction({
-      name: 'receive',
-      data: {
-        num: seqno,
-        account: now,
-        type: 'up'
-      }
-    }).then(res => {
-      if (res.result === null) return console.log('没有新的邮件');
-      mail.unshift(...res.result)
-      this.setData({ mail })
-    })
-  },
   touchstart(e) {
     let _ = { clientY, pageY } = e.changedTouches[0]
   },
   touchmove(e) {
-    const { clientY: cY, pageY: pY } = e.changedTouches[0]
+    const { clientY: cY } = e.changedTouches[0]
     const top = clientY == pageY
-    const search_display = this.data.search_display
-    if (top && cY > clientY) {
+    const { search_display, translate, refreshing } = this.data
+    if (top && cY > clientY && !translate && !refreshing) {
+      this.setData({ refreshing: true })
+    }
+    if (top && !translate && refreshing) {
       // refresh
-      const refresh_position = cY - refreshTop > 360 ? 360 : isNaN(cY - refreshTop) ? 0 : cY - refreshTop
+      let refresh_position = isNaN(cY - refreshTop) ? 0 : cY - refreshTop
+      refresh_position > 360 && (refresh_position = 360)
+      refresh_position < 0 && (refresh_position = 0)
       throttle3(30000, () => {
         refreshTop = cY
       })
@@ -202,7 +202,9 @@ Page({
           this.refresh()
         })
       }
-      this.setData({ refresh_position })
+      throttle5(50, () => {
+        this.setData({ refresh_position })
+      })
     }
     // search_display
     if (Top === 0) {
@@ -218,7 +220,24 @@ Page({
   touchend(e) {
     throttle3 = throttle()
     throttle4 = throttle()
-    this.setData({ refresh_position: 0 })
+    this.setData({ refresh_position: 0, refreshing: false })
+  },
+
+  refresh() {
+    const { now, mail } = this.data
+    const seqno = mail[0].seqno
+    wx.cloud.callFunction({
+      name: 'receive',
+      data: {
+        num: seqno,
+        account: now,
+        type: 'up'
+      }
+    }).then(res => {
+      if (res.result === null) return console.log('没有新的邮件');
+      mail.unshift(...res.result)
+      this.setData({ mail })
+    })
   },
   onPageScroll(e) {
     Top = e.scrollTop

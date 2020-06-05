@@ -5,7 +5,7 @@
   height: 2rem;
   border-radius: 50%;
   left: 50%;
-  margin-top: 3rem;
+  margin-top: 3.5rem;
   z-index: 2;
   padding: .2rem;
   /* border: .1rem solid greenyellow; */

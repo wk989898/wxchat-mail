@@ -1,10 +1,10 @@
 module.exports = function ob(newValue, oldValue, ownerInstance, instance) {
   instance.setStyle({
-    'top':newValue/4+'px'
+    'top': newValue / 4 + 'px'
   })
-  var image=ownerInstance.selectComponent('.refresh_image')
+  var image = ownerInstance.selectComponent('.refresh_image')
   image.setStyle({
-    'transform':'rotate('+newValue+'deg)'
+    'transform': 'rotate(' + newValue + 'deg)'
   })
   return false
 }

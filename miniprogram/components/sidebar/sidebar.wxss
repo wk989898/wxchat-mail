@@ -18,3 +18,15 @@
   height: 0.1rem;
   background-color: rgba(1, 1, 1, .1);
 }
+.side_item{
+  display: flex;
+}
+.side_item>text{
+  display: block;
+  margin-left: 1rem;
+  line-height: 2rem;
+}
+.side_item>image{
+  height: 2rem;
+  width: 2rem;
+}
