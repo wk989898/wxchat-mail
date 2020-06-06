@@ -1,20 +1,24 @@
 /* miniprogram/pages/body/index.wxss */
-.content{
+.content {
   width: 100vw;
 }
-.c_subject{
+
+.c_subject {
   font-size: 1.5rem;
-  margin: 1rem .5rem;
+  margin: 1rem 1rem 1.5rem;
 }
-.c_main{
+
+.c_main {
   display: flex;
-  margin-bottom: 1rem;
+  width: 100%;
+  align-content: space-between;
 }
-.c_main>text{
+
+.c_main>text {
+  display: block;
   border-radius: 50%;
   background-color: purple;
   color: white;
-  text-align: center;
   font-size: 1.5rem;
   height: 3rem;
   width: 3rem;
@@ -22,26 +26,43 @@
   text-align: center;
   margin: 1rem;
 }
-.c_name>text{
-  font-size: .6rem;
+
+.c_1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 3rem;
+  white-space: nowrap;
 }
-.c_name{
-  font-weight: 200;
+.c_1>text {
+  font-size: .8rem;
+  line-height: 3rem;
+  color: #696969;
 }
-.content>view{
-  margin: .5rem;
+.c_2 {
+  font-size: 1rem;
+  line-height: .8rem;
+  color: #696969;
+  white-space: nowrap;
 }
-.c_name{
-  flex: 1;
+
+.c_main>image {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1.5rem;
+  transform: translateY(100%);
+  z-index: 777;
 }
-.c_body{
-  width:100vw;
+
+.c_body {
+  width: 100vw;
 }
-.c_re{
+
+.c_re {
   display: flex;
   align-content: space-between;
 }
-.c_re>view{
+
+.c_re>view {
   flex: 1;
   border: .05rem solid gray;
   border-radius: .5rem;
@@ -50,4 +71,9 @@
   padding: .5rem;
   text-align: center;
   margin: .5rem;
+}
+
+.c_re view image {
+  width: 1rem;
+  height: 1rem;
 }

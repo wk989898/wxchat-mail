@@ -22,7 +22,6 @@ Page({
     idx: 0,
     selectList: [],
     rotate: [],
-    remove: false,
     translate: false,
     // top display
     refresh_position: 0,
@@ -54,15 +53,11 @@ Page({
     this.setData({ idx: index })
   },
   touchMove(e) {
-    const { x, remove, idx, refreshing } = this.data
+    const { x, idx, refreshing } = this.data
     if (refreshing) return;
     const clientX = e.changedTouches[0].clientX
     const m = (clientX - long) / width * 100
-    if (Math.abs(m) > 60) {
-      if (remove) return;
-      this.setData({ remove: true })
-    }
-    if (x !== 0 || Math.abs(m) > 10) {
+    if (x !== 0 || Math.abs(m) > 15) {
       const rotate = this.data.rotate[idx]
       if (rotate) this.select(e)
       throttle1(50, () => {
@@ -71,19 +66,22 @@ Page({
     }
   },
   touchEnd() {
-    const { remove, mail, idx } = this.data
-    if (remove) mail.splice(idx, 1)
-    setTimeout(() => {
-      this.setData({ x: 0, remove: false, translate: false, mail })
-    }, 50);
+    const { mail, idx, x } = this.data
+    const m = parseFloat(x)
+    const direction = m > 0 ? '' : '-'
+    if (Math.abs(m) > 55) {
+      mail.splice(idx, 1)
+      this.setData({ x: `${direction}100%`, translate: false, mail })
+      setTimeout(() => {
+        this.setData({ x: 0 })
+      }, 300);
+    } else this.setData({ x: 0, translate: false })
   },
 
   getItem(e) {
     // if (this.data.sidebar) return;
-    console.log(e);
     const index = e.currentTarget.dataset.index
     const mail = this.data.mail
-    console.log('getItem', index);
     wx.navigateTo({
       url: '/pages/content/index',
       success(res) {
@@ -122,7 +120,7 @@ Page({
     this.setData({ rotate })
     setTimeout(() => {
       this.setData({ selectList })
-    }, 300)
+    }, 350)
   },
   // onload
   onLoad: async function (options) {
@@ -185,7 +183,7 @@ Page({
     const { clientY: cY } = e.changedTouches[0]
     const top = clientY == pageY
     const { search_display, translate, refreshing } = this.data
-    if (top && cY > clientY && !translate && !refreshing) {
+    if (top && (cY - clientY) > 5 && !translate && !refreshing) {
       this.setData({ refreshing: true })
     }
     if (top && !translate && refreshing) {
@@ -211,7 +209,7 @@ Page({
       throttle2(1000, () => {
         this.setData({ search_display: false })
       })
-    } else if (cY > clientY && !search_display) {
+    } else if (cY - clientY>5 && !search_display) {
       this.setData({ search_display: true })
     }
 

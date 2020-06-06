@@ -7,8 +7,6 @@
 
 待做 :
 - 头像背景颜色变化
-- delete icon
-- reply relay icon
 - loading display
 - ......
 - 小程序上线 🤔

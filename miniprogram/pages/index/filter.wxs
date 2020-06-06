@@ -5,8 +5,8 @@ function typeFilter(type) {
   return types[type]
 }
 function textFilter(str) {
-  if (str.length > 12)
-    return str.slice(0, 12) + '...'
+  if (str.length > 15)
+    return str.slice(0, 15) + '...'
   else return str
 }
 

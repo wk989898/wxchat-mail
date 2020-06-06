@@ -2,46 +2,46 @@
 <view class="control" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
   <view class="{{sidebar?'bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar" catchtouchmove="move"
     style="height:100vh;transition: .5s all ease;" />
-  <view >
-    <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}"
-      search_display="{{search_display}}" bindchangeAccount="changeNow"/>
+  <view>
+    <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}" search_display="{{search_display}}"
+      bindchangeAccount="changeNow" />
     <view wx:if="{{search_display}}" style="height:3.3rem;" />
 
-    <Top active="{{filter.Top(rotate)}}" binddelete="removeItem"/>
+    <Top active="{{filter.Top(rotate)}}" binddelete="removeItem" />
     <Write />
     <!-- scroll -->
-    <TopRefresh  refresh_position="{{refresh_position}}" wx:if="{{refresh_position}}"/>
+    <TopRefresh refresh_position="{{refresh_position}}" wx:if="{{refresh_position}}" />
     <view class="main">
       <view class="type">{{filter.typeFilter(type)}}</view>
 
-      <view wx:for="{{filter.type(mail,type)}}" wx:key="index" style="position: relative;" class="{{index===idx&&!(x==0)?'mail_scroll':''}}">
-<!-- bg -->
+      <view wx:for="{{filter.type(mail,type)}}" wx:key="index" style="position: relative;"
+        class="{{index===idx&&!(x==0)?'mail_scroll':''}}">
+        <!-- bg -->
         <view wx:if="{{index===idx&&!(x==0)}}" class="bg_archive">
-          <view class="bg_1">删除</view>
-          <view class="bg_2">删除</view>
+          <image class="bg_1" src="/assets/image/remove.png" />
+          <image class="bg_2" src="/assets/image/remove.png" />
         </view>
-        <view class="item" data-index="{{index}}"  hover-class="hover"
-        style="transform: translateX({{index===idx?x:''}});" bindlongpress="select"
-        bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
-<!-- left -->
-        <view class="i_select" catchtap="select" data-index="{{index}}">
-          <text  class="active {{rotate[index]?'':'rotate'}}" wx:if="{{selectList[index]}}">√</text>
-          <text  class="capital {{rotate[index]?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</text>
-        </view>
-<!-- right -->
-          <view bindtap="getItem" data-index="{{index}}" class="right" >
+        <view class="item {{translate?'':'trans'}}" data-index="{{index}}" hover-class="hover"
+          style="transform: translateX({{index===idx?x:''}});" bindlongpress="select" bindtouchstart="touchStart"
+          bindtouchmove="touchMove" bindtouchend="touchEnd">
+          <!-- left -->
+          <view class="i_select" catchtap="select" data-index="{{index}}">
+            <view class="active {{rotate[index]?'':'rotate'}}" wx:if="{{selectList[index]}}">
+              <image src="/assets/image/true.png"/>
+            </view>
+            <view class="capital {{rotate[index]?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</view>
+          </view>
+          <!-- right -->
+          <view bindtap="getItem" data-index="{{index}}" class="right">
             <view>
-              <text class="name">{{item.name}}</text>
+              <text class="name wrap">{{item.name}}</text>
               <text class="time">{{item.time}}</text>
             </view>
-            <view>
+            <view class="wrap">
               {{filter.textFilter(item.subject)}}
+              <image class="star" data-index="{{index}}" catchtap="store"
+                src="{{'../../assets/image/'+(item.star?'starred.png':'star.png')}}" />
             </view>
-            <!-- <view class="body">
-              {{filter(item.body)}}
-            </view> -->
-            <image class="star" data-index="{{index}}"
-              src="{{'../../assets/image/'+(item.star?'starred.png':'star.png')}}" catchtap="store" />
           </view>
         </view>
       </view>

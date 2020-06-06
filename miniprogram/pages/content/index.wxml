@@ -4,17 +4,23 @@
 
   <view class="c_main">
     <text>{{capital(name)}}</text>
-    <view class="c_name">
-      <view style="font-weight: 300;"> {{textFilter(name)}}</view><text> {{time}}</text> 
-      <view style="font-size: .8rem;">收件人:{{to}}</view>
+    <view style="flex: 1;">
+      <view class="c_1">
+        {{textFilter(name)}}
+        <text> {{time}}</text> 
+      </view>
+      <view class="c_2">收件人:{{to}}</view>
     </view>
+    <image src="/assets/image/left.png" bindtap="reply"/>
   </view>
   <view  class="c_body"><towxml nodes="{{article}}" /></view>
   <view class="c_re">
     <view bindtap="reply">
+      <image src="/assets/image/left.png" />
       回复
     </view>
     <view bindtap="relay">
+      <image src="/assets/image/right.png" />
       转发
     </view>
   </view>
