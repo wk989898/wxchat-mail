@@ -1,5 +1,5 @@
 // miniprogram/pages/index/index.js
-import { throttle, format } from "../../util/index";
+import { throttle } from "../../util/index";
 const throttle1 = throttle()
 const throttle2 = throttle()
 var throttle3 = throttle()
@@ -8,7 +8,7 @@ var throttle5 = throttle()
 const width = wx.getSystemInfoSync().windowWidth
 const app = getApp()
 var clientY, pageY, long
-var Top = 0, refreshTop
+var Top = 0, refreshTop, getMore
 
 Page({
   data: {
@@ -94,6 +94,9 @@ Page({
     let { selectList, mail } = this.data
     mail = mail.filter((v, i) => !selectList[i])
     this.setData({ mail, selectList: [], rotate: [] })
+  },
+  topBack() {
+    this.setData({ selectList: [], rotate: [] })
   },
   // sidebar
   openSidebar() {
@@ -194,12 +197,6 @@ Page({
       throttle3(30000, () => {
         refreshTop = cY
       })
-      if (refresh_position === 270) {
-        throttle4(60000, () => {
-          console.log('refresh')
-          this.refresh()
-        })
-      }
       throttle5(50, () => {
         this.setData({ refresh_position })
       })
@@ -209,21 +206,27 @@ Page({
       throttle2(1000, () => {
         this.setData({ search_display: false })
       })
-    } else if (cY - clientY>5 && !search_display) {
+    } else if (cY - clientY > 5 && !search_display) {
       this.setData({ search_display: true })
     }
 
     let _ = { clientY, pageY } = e.changedTouches[0]
   },
-  touchend(e) {
+  touchend() {
+    const { refresh_position } = this.data
     throttle3 = throttle()
     throttle4 = throttle()
-    this.setData({ refresh_position: 0, refreshing: false })
+    if (refresh_position > 270) {
+      console.log('refresh')
+      this.refresh()
+      getMore = true
+    } else getMore = false
+    this.setData({ refresh_position: getMore ? -1 : 0, refreshing: false })
   },
 
   refresh() {
     const { now, mail } = this.data
-    const seqno = mail[0].seqno
+    const seqno = mail[0].seqno || 0
     wx.cloud.callFunction({
       name: 'receive',
       data: {
@@ -232,16 +235,23 @@ Page({
         type: 'up'
       }
     }).then(res => {
-      if (res.result === null) return console.log('没有新的邮件');
+      getMore = false
+      if (res.result === null) {
+        console.log('没有新的邮件');
+        this.setData({ refresh_position: 0 })
+        return
+      }
       mail.unshift(...res.result)
-      this.setData({ mail })
+      this.setData({ mail, refresh_position: 0 })
     })
   },
   onPageScroll(e) {
     Top = e.scrollTop
   },
   onReachBottom() {
-    console.log('bottom')
+    if (getMore) return;
+    console.log('load more ...');
+    getMore = true
     const { mail, now } = this.data
     const seqno = mail[mail.length - 1].seqno
     wx.cloud.callFunction({
@@ -252,6 +262,7 @@ Page({
         type: 'down'
       }
     }).then(res => {
+      getMore = false
       if (res.result === null) return console.log('没有更多邮件');
       mail.push(...res.result)
       this.setData({ mail })

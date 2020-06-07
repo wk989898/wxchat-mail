@@ -5,7 +5,7 @@ Component({
   properties: {
   },
   data: {
-    account:null
+    account:[]
   },
   lifetimes:{
     attached(){

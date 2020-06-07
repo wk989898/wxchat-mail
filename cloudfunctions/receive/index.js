@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
   return await client.receive(total => {
     if (type === 'down') {
       // load more
-      return `${num - 4}:${num}`
+      return `${num - 5}:${num-1}`
     } else if (type === 'up') {
       // pull refresh
       const t = total - num
@@ -37,6 +37,7 @@ exports.main = async (event, context) => {
         name,
         from,
         time,
+        flags:v.attrs.flags,
         body: v.body,
         subject: v.header.subject[0],
         to: v.header.to[0].replace(/^[\s\S]*\<|\>$/g, ''),

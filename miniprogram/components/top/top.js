@@ -11,7 +11,7 @@ Component({
   },
   methods: {
     back(){
-      this.setData({active:false})
+      this.triggerEvent('back')
     },
     delete(){
       this.triggerEvent('delete')

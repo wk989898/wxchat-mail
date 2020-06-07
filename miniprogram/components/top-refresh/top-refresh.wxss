@@ -4,10 +4,12 @@
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
+  top:.5rem;
   left: 50%;
   margin-top: 3.5rem;
   z-index: 2;
   padding: .2rem;
+  background: #fff;
   /* border: .1rem solid greenyellow; */
   box-shadow: .05rem .05rem .05rem gray, -.05rem -.05rem .05rem gray,
     -.05rem .05rem .05rem gray, .05rem -.05rem .05rem gray;
@@ -18,15 +20,16 @@
   height: 100%;
 }
 
-/* .animate {
-  animation-play-state: running;
-  animation-iteration-count:1;
+.animate {
+  animation: refresh infinite 0.5s;
 }
+
 @keyframes refresh {
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
-} */
+}

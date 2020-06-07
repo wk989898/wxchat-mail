@@ -3,10 +3,12 @@
 </view>
 <view class="ac_body">
   <view wx:for="{{account}}" wx:key="index" class="ac_item" catchtap="select" data-index="{{index}}">
-    <text class="ac_head">{{item.name}}</text>
+  <text class="ac_head" style="{{color()}}">{{item.name}}</text>
     <view>
       <view>{{item.name}}</view> 
       <view>{{item.addr}}</view> 
     </view>
   </view>
 </view>
+
+<wxs module="color" src="./color.wxs" />

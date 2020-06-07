@@ -1,8 +1,14 @@
-var types = {
+var Types = {
   all: '全部', main: '主要', star: '星标'
 }
+var Colors = {
+  QQ: '#87CEEB', GOOGLE: '#DC143C', ALI: '#FF4500', '163': '#CD5C5C',
+  OUTLOOK:'#4682B4',APPLE: '#C0C0C0',
+  ZH: '#2E8B57', EN: '#6A5ACD'
+}
+
 function typeFilter(type) {
-  return types[type]
+  return Types[type]
 }
 function textFilter(str) {
   if (str.length > 15)
@@ -15,6 +21,21 @@ function capital(str) {
   return str.replace(reg, "")
     .slice(0, 1).toUpperCase()
 }
+function bg(from, name) {
+  var reg = getRegExp("@(.+)\.([A-Za-z]{2,8})$")
+  var regZH = getRegExp("[\u4e00-\u9fa5]+")
+  var pattern = getRegExp("QQ|ALI|163|GOOGLE|OUTLOOK|APPLE")
+  var key = from.match(reg)[1].toUpperCase()
+  var color
+  if (pattern.test(key)) {
+    key = key.match(pattern)[0]
+    color = Colors[key]
+  } else if (regZH.test(name)) {
+    color = Colors['ZH']
+  } else color = Colors['EN']
+  return "background-color:" + color
+}
+
 function type(mail, type) {
   if (type === 'star')
     mail = mail.filter(function (v) {
@@ -33,5 +54,6 @@ module.exports = {
   capital: capital,
   typeFilter: typeFilter,
   Top: Top,
-  type: type
+  type: type,
+  bg: bg
 }

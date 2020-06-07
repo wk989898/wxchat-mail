@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "moment": "^2.26.0",
-    "node-mail-client": "^1.2.5",
-    "wx-server-sdk": "^2.0.4"
+    "node-mail-client": "^1.2.7",
+    "wx-server-sdk": "^2.1.1"
   }
 }

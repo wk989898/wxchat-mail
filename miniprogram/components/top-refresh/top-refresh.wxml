@@ -1,6 +1,9 @@
 <!--components/top-refresh/top-refresh.wxml-->
-<view class="refresh" change:prop="{{ob}}" prop="{{refresh_position}}">
-<image src="/assets/image/refresh.png" alt="refresh" class="refresh_image" />
+<view wx:if="{{refresh_position===-1}}" class="refresh animate">
+  <image src="/assets/image/refresh.png" alt="refresh" class="refresh_image" />
+</view>
+<view class="refresh" change:prop="{{ob}}" prop="{{refresh_position}}" wx:else>
+  <image src="/assets/image/refresh.png" alt="refresh" class="refresh_image" />
 </view>
 
-<wxs src="./ob.wxs" module="ob"/>
+<wxs src="./ob.wxs" module="ob" />

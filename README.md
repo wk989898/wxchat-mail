@@ -1,12 +1,11 @@
 # Mail
-期末作业(未完成)
+期末作业(即将完成)
 
 ## 介绍
 仿 gmail app 的小程序   
 纯原生小程序，css功底有点差😅， 欢迎`star`/`fork`
 
 待做 :
-- 头像背景颜色变化
 - loading display
 - ......
 - 小程序上线 🤔
@@ -19,7 +18,7 @@
    - [删除/星标/归档 邮件](##备注)
    - [查看所有邮件](##备注)
 - 下拉加载会有卡顿
-- 网页内容不能缩小，base64内容无法显示（暂时没找到办法~~[欢迎PR](https://github.com/wk989898/wxchat-mail/pulls)）
+- 网页内容不能缩小,纯文本解析换行问题,base64内容无法显示（暂时没找到办法~~欢迎提供建议）
 
 ## 备注
 感谢[@sbfkcel](https://github.com/sbfkcel) 提供的 [towxml](https://github.com/sbfkcel/towxml) html渲染  

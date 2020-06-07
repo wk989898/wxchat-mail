@@ -7,7 +7,7 @@
       bindchangeAccount="changeNow" />
     <view wx:if="{{search_display}}" style="height:3.3rem;" />
 
-    <Top active="{{filter.Top(rotate)}}" binddelete="removeItem" />
+    <Top active="{{filter.Top(rotate)}}" binddelete="removeItem" bindback="topBack"/>
     <Write />
     <!-- scroll -->
     <TopRefresh refresh_position="{{refresh_position}}" wx:if="{{refresh_position}}" />
@@ -29,7 +29,9 @@
             <view class="active {{rotate[index]?'':'rotate'}}" wx:if="{{selectList[index]}}">
               <image src="/assets/image/true.png"/>
             </view>
-            <view class="capital {{rotate[index]?'rotate':''}}" wx:else>{{filter.capital(item.name)}}</view>
+            <view class="capital {{rotate[index]?'rotate':''}}"  wx:else style="{{filter.bg(item.from,item.name)}}">
+              {{filter.capital(item.name)}}
+            </view>
           </view>
           <!-- right -->
           <view bindtap="getItem" data-index="{{index}}" class="right">

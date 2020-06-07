@@ -6,10 +6,10 @@
     <text>{{capital(name)}}</text>
     <view style="flex: 1;">
       <view class="c_1">
-        {{textFilter(name)}}
+        {{name}}
         <text> {{time}}</text> 
       </view>
-      <view class="c_2">收件人:{{to}}</view>
+      <view class="c_2">收件人:{{textFilter(to)}}</view>
     </view>
     <image src="/assets/image/left.png" bindtap="reply"/>
   </view>
@@ -37,8 +37,8 @@
 
 <wxs module="textFilter">
   module.exports=function textFilter(str) {
-  if (str.length > 6)
-  return str.slice(0, 6) + '...'
+  if (str.length > 20)
+  return str.split('@')[0]||str
   else return str
   }
 </wxs>
