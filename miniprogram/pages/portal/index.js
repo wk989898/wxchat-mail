@@ -23,7 +23,8 @@ Page({
         })
     })
   },
-  onLoad: function () {
+  onLoad: async function () {
+    await setTimeout(console.log, 500);
     this.portal()
   },
   onshow() {

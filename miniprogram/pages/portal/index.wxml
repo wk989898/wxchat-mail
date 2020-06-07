@@ -1,4 +1,6 @@
 <!--miniprogram/pages/portal/index.wxml-->
+<image src="/assets/image/bg.jpg" alt="mail" class="mailbox"/>
 <view class="portal">
- Mail
+<text>
+</text>
 </view>
