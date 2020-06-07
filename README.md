@@ -11,14 +11,17 @@
 - 小程序上线 🤔
 
 ## 注意
-- 有些功能未实现
+- 有些功能未实现（备注有说明）
    - 搜索
    - 滑动查看上/下一封邮件
    - 滑动打开侧边栏
-   - [删除/星标/归档 邮件](##备注)
-   - [查看所有邮件](##备注)
+   - 删除/星标/归档 邮件
+   - 查看所有邮件
 - 下拉加载会有卡顿
-- 网页内容不能缩小,纯文本解析换行问题,base64内容无法显示（暂时没找到办法~~欢迎提供建议）
+- towxml解析（暂时没找到办法~~欢迎提供建议）
+   - 网页内容不能缩小[#145](https://github.com/sbfkcel/towxml/issues/145)
+   - 纯文本解析换行问题[#150](https://github.com/sbfkcel/towxml/issues/150)
+- ~~base64内容无法显示~~(貌似已经解决)
 
 ## 备注
 感谢[@sbfkcel](https://github.com/sbfkcel) 提供的 [towxml](https://github.com/sbfkcel/towxml) html渲染  

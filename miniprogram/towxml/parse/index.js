@@ -100,7 +100,7 @@ module.exports = (str,option) => {
             let result = re.exec(str);
             return result[1] || str;
         }else{
-            return str;
+            return `<pure>${str}</pure>`;
         };
     })();
     return initObj(parse2(str,{decodeEntities:true}),option);

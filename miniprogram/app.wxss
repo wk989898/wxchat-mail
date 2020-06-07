@@ -1,29 +1,34 @@
 /**app.wxss**/
-.h2w__script,.h2w__style{
+.h2w__script,
+.h2w__style {
   display: none;
 }
 
-.h2w-light .h2w__th, .h2w-light .h2w__td{
+.h2w-light .h2w__th,
+.h2w-light .h2w__td {
   border: none !important;
 }
-
+/* 特殊标签 */
+.h2w__pure>decode {
+  white-space: pre-wrap;
+}
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+}
 
 button {
   background: initial;
 }
 
-button:focus{
+button:focus {
   outline: 0;
 }
 
-button::after{
+button::after {
   border: none;
 }
 
@@ -35,7 +40,9 @@ page {
   justify-content: flex-start;
 }
 
-.userinfo, .uploader, .tunnel {
+.userinfo,
+.uploader,
+.tunnel {
   margin-top: 40rpx;
   height: 140rpx;
   width: 100%;
@@ -73,7 +80,8 @@ page {
   border: none;
 }
 
-.uploader, .tunnel {
+.uploader,
+.tunnel {
   height: auto;
   padding: 0 0 0 40rpx;
   flex-direction: column;
@@ -81,7 +89,8 @@ page {
   box-sizing: border-box;
 }
 
-.uploader-text, .tunnel-text {
+.uploader-text,
+.tunnel-text {
   width: 100%;
   line-height: 52px;
   font-size: 34rpx;

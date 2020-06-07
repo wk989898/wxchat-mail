@@ -13,7 +13,7 @@
     </view>
     <image src="/assets/image/left.png" bindtap="reply"/>
   </view>
-  <view  class="c_body"><towxml nodes="{{article}}" /></view>
+  <view  class="c_body"><towxml nodes="{{article}}" style="width:100vw"/></view>
   <view class="c_re">
     <view bindtap="reply">
       <image src="/assets/image/left.png" />
