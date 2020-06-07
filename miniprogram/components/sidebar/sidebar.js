@@ -8,12 +8,14 @@ Component({
   methods: {
     select(e) {
       const type = e.currentTarget.dataset.type
-      if (type !== 'set'){
-        this.setData({ type })
-        this.triggerEvent('type', type)
-      }else wx.navigateTo({
-        url: '/pages/set/index',
-      })
+      if (/^(about|set)$/.test(type)) {
+        wx.navigateTo({
+          url: `/pages/${type}/index`,
+        })
+        return;
+      }
+      this.setData({ type })
+      this.triggerEvent('type', type)
     }
   },
   options: {

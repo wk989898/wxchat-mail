@@ -59,9 +59,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "pages/mail/index",
-					"pathName": "pages/mail/index",
+					"id": 1,
+					"name": "pages/send/index",
+					"pathName": "pages/portal/index",
 					"query": "",
 					"scene": null
 				},
@@ -84,6 +84,12 @@
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/about/index",
+					"pathName": "pages/about/index",
 					"scene": null
 				}
 			]

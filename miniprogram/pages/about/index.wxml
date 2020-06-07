@@ -1,0 +1,11 @@
+<!--miniprogram/pages/about/index.wxml-->
+<view class="about">
+  <view>
+    模仿gmail app 的小程序
+  </view>
+  <view style="height: 2rem;"/>
+  <view>
+    项目地址
+    https://github.com/wk989898/wxchat-mail
+  </view>
+</view>

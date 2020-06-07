@@ -5,7 +5,8 @@
     "pages/index/index",
     "pages/set/index",
     "pages/send/index",
-    "pages/content/index"
+    "pages/content/index",
+    "pages/about/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
