@@ -1,14 +1,14 @@
 # Mail
-期末作业(即将完成)
+期末作业
 
 ## 介绍
 仿 gmail app 的小程序   
 纯原生小程序，css功底有点差😅， 欢迎`star`/`fork`
 
 待做 :
-- loading display
+- loading display🤔
 - ......
-- 小程序上线 🤔
+- ~~小程序上线~~
 
 ## 注意
 - 有些功能未实现（备注有说明）

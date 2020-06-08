@@ -117,7 +117,7 @@
 }
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 0;
   background-color: white;
@@ -131,8 +131,8 @@
   width: 85%;
 }
 
-.bg {
-  position: absolute;
+.sidebar_bg {
+  position: fixed;
   top: 0;
   bottom: 0;
   height: 100vh;
