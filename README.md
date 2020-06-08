@@ -19,8 +19,8 @@
    - 查看所有邮件
 - 下拉加载会有卡顿
 - towxml解析（暂时没找到办法~~欢迎提供建议）
-   - 网页内容不能缩小[#145](https://github.com/sbfkcel/towxml/issues/145)
-   - 纯文本解析换行问题[#150](https://github.com/sbfkcel/towxml/issues/150)
+   - 网页内容不能全屏显示[#145](https://github.com/sbfkcel/towxml/issues/145)
+   - ~~纯文本解析换行问题~~
 - ~~base64内容无法显示~~(貌似已经解决)
 
 ## 备注
