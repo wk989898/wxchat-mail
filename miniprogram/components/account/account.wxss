@@ -22,7 +22,7 @@
 }
 .ac_item{
   display: flex;
-  padding-bottom: .5rem;
+  padding: .5rem 0;
   border-bottom: .05rem solid gray;
 }
 .ac_item>view{
@@ -40,4 +40,19 @@
   /* overflow: hidden; */
   font-size: 1.5rem;
   text-align: center;
+}
+.ac_user{
+  display: flex;
+  margin-top: 1rem;
+}
+.ac_user>image{
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.ac_user>text{
+  display: block;
+  flex: 1;
+  line-height: 3rem;
+  font-size: 1.2rem;
+  margin-left: 1rem;
 }

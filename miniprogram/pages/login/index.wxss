@@ -60,3 +60,26 @@ border: .1rem solid gray;
   line-height: 1.5rem;
   flex: 1;
 }
+
+.login_animation{
+  position: relative;
+}
+.login_animation::after{
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  animation: login infinite 1.5s ease-in ;
+  width: 10%;
+  background-color: #8FBC8F;
+  height: .3rem;
+}
+@keyframes login{
+  0%{
+    margin-left: -20%;
+  }
+  100%{
+    margin-left: 110%;
+    width: 100%;
+  }
+}

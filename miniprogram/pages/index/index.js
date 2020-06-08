@@ -132,6 +132,11 @@ Page({
     await wx.cloud.callFunction({
       name: 'account'
     }).then(({ result }) => {
+      if(result.length===0){
+        return wx.redirectTo({
+          url:'/pages/login/index'
+        })
+      }
       let now = result[0]
       if (oa) {
         now = result.find(v => v.addr = oa)

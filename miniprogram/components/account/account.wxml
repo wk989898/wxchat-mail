@@ -3,11 +3,15 @@
 </view>
 <view class="ac_body">
   <view wx:for="{{account}}" wx:key="index" class="ac_item" catchtap="select" data-index="{{index}}">
-  <text class="ac_head" style="{{color()}}">{{item.name}}</text>
+    <text class="ac_head" style="{{color()}}">{{item.name}}</text>
     <view>
       <view>{{item.name}}</view> 
       <view>{{item.addr}}</view> 
     </view>
+  </view>
+  <view class="ac_user" catchtap="addUser">
+    <image src="/assets/image/user.png"/>
+    <text>添加账户</text>
   </view>
 </view>
 

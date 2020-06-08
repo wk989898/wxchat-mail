@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
 
     await db.collection('user').doc(openid).get()
       .then(async res => {
-        mails = res.data.mails.concat(mails)
+        mails = res.data.mails.filter(v => v.addr !== mails[0].addr).concat(mails)
         await db.collection('user').doc(openid).update({
           data: {
             mails

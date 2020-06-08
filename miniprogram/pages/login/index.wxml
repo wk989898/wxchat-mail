@@ -44,7 +44,8 @@
       </view>
     </view>
   </view>
-  <view wx:elif="{{step===4}}">正在连接...</view>
+  <view wx:elif="{{step===4}}" class="login_animation">正在连接...</view>
+  
   <view wx:elif="{{step===-1}}">
     请输入正确的账户密码
     <button bindtap="update" data-type="account">修改</button>

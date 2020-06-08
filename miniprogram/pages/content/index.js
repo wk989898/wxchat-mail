@@ -16,7 +16,6 @@ Page({
     eventChannel.on('mail', function (data) {
       const { body, subject, name, time, to, from } = data
       let article = app.towxml(body, 'html');
-      console.log(body, subject, name, time, to, from);
       that.setData({
         subject, name, to, time, from,
         article, isLoading: false

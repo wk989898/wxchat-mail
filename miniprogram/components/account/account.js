@@ -5,21 +5,26 @@ Component({
   properties: {
   },
   data: {
-    account:[]
+    account: []
   },
-  lifetimes:{
-    attached(){
-      this.setData({account:app.globalData.account})
+  lifetimes: {
+    attached() {
+      this.setData({ account: app.globalData.account })
     }
   },
   methods: {
     select(e) {
-      const index=e.currentTarget.dataset.index
-      const now=this.data.account[index]
-      this.triggerEvent('account',{addr:now.addr})
+      const index = e.currentTarget.dataset.index
+      const now = this.data.account[index]
+      this.triggerEvent('account', { addr: now.addr })
     },
-    back(){
-      this.triggerEvent('account',{})
+    back() {
+      this.triggerEvent('account', {})
+    },
+    addUser() {
+      wx.navigateTo({
+        url: `/pages/login/index`,
+      })
     }
   }
 })

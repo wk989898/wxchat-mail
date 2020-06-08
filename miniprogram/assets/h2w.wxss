@@ -1,0 +1,26 @@
+.h2w__script,
+.h2w__style {
+  display: none;
+}
+
+.h2w-light .h2w__th,
+.h2w-light .h2w__td {
+  border: none !important;
+}
+
+.h2w__table,
+.h2w__td,
+.h2w__tr {
+  width: auto !important;
+}
+
+.h2w__p>decode,
+h2w__td {
+  white-space: pre-line !important;
+}
+
+/* 特殊标签 */
+.h2w__pure>decode {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
