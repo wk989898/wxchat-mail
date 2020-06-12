@@ -121,14 +121,16 @@
   height: 100%;
   width: 0;
   background-color: white;
-  transition: ease .5s width;
   white-space: nowrap;
   overflow: hidden;
   z-index: 999;
 }
+.sidebartrans{
+  transition: ease .5s width;
+}
 
 .display {
-  width: 80%;
+  width: 80% !important;
 }
 
 .sidebar_bg {

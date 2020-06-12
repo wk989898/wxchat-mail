@@ -1,7 +1,8 @@
-<Sidebar class="sidebar {{sidebar?'display':''}}" bindtype="setType" catchtouchmove="move" />
+<Sidebar class="sidebar sidebartrans {{sidebar?'display':''}}" style="width:{{sidebarX}}" 
+ bindtype="setType" />
 <view class="control" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
-  <view class="{{sidebar?'sidebar_bg':''}}" wx:if="{{sidebar}}" catchtap="closeSidebar" catchtouchmove="move"
-    style="height:100vh;transition: .5s all ease;" />
+  <view class="sidebar_bg " wx:if="{{sidebar||sidebarX!==0}}" catchtap="closeSidebar" 
+     style="height:100vh;transition: .5s all ease;" />
   <view>
     <Search catchSidebar="openSidebar" account="{{account}}" now="{{now}}" search_display="{{search_display}}"
       bindchangeAccount="changeNow" />

@@ -4,10 +4,9 @@ const throttle1 = throttle()
 const throttle2 = throttle()
 var throttle3 = throttle()
 var throttle4 = throttle()
-var throttle5 = throttle()
 const width = wx.getSystemInfoSync().windowWidth
 const app = getApp()
-var clientY, pageY, long
+var clientY, clientX, pageY, long
 var Top = 0, refreshTop, getMore
 
 Page({
@@ -16,7 +15,9 @@ Page({
     type: 'main',
     account: [],
     now: null,
+    // sidebar
     sidebar: false,
+    sidebarX: 0,
     // translate and select
     x: 0,
     idx: 0,
@@ -54,9 +55,9 @@ Page({
   },
   touchMove(e) {
     const { x, idx, refreshing } = this.data
-    if (refreshing) return;
-    const clientX = e.changedTouches[0].clientX
-    const m = (clientX - long) / width * 100
+    if (refreshing || clientX < 10) return;
+    const cX = e.changedTouches[0].clientX
+    const m = (cX - long) / width * 100
     if (x !== 0 || Math.abs(m) > 15) {
       const rotate = this.data.rotate[idx]
       if (rotate) this.select(e)
@@ -98,11 +99,28 @@ Page({
   topBack() {
     this.setData({ selectList: [], rotate: [] })
   },
+  
   // sidebar
+  setSidebar() {
+    const { sidebarX } = this.data
+    if (parseFloat(sidebarX) >= 50) return this.setData({ sidebar: true, sidebarX: 0 })
+    this.setData({ sidebar: false, sidebarX: 0 })
+  },
   openSidebar() {
     console.log('open Sidebar');
     this.setData({ sidebar: true })
   },
+  // 卡顿明显
+  // move(e) {
+  //   const { clientX } = e.changedTouches[0]
+  //   const m = clientX / width * 100
+  //   if (m <= 80) {
+  //     this.setData({ sidebarX: m + '%', sidebar: false })
+  //   } else this.setData({ sidebar: true })
+  // },
+  // moveEnd() {
+  //   this.setSidebar()
+  // },
   closeSidebar() {
     if (this.data.sidebar) {
       console.log('close Sidebar');
@@ -132,9 +150,9 @@ Page({
     await wx.cloud.callFunction({
       name: 'account'
     }).then(({ result }) => {
-      if(result.length===0){
+      if (result.length === 0) {
         return wx.redirectTo({
-          url:'/pages/login/index'
+          url: '/pages/login/index'
         })
       }
       let now = result[0]
@@ -185,10 +203,18 @@ Page({
   },
   // 下拉刷新 上拉搜索
   touchstart(e) {
-    let _ = { clientY, pageY } = e.changedTouches[0]
+    let _ = { clientY, pageY, clientX } = e.changedTouches[0]
   },
   touchmove(e) {
-    const { clientY: cY } = e.changedTouches[0]
+    const { clientY: cY, clientX: cX } = e.changedTouches[0]
+    // sidebar
+    if (clientX < 10) {
+      let m = cX / width * 100
+      m = m >= 80 ? 80 : m
+      this.setData({ sidebarX: m + '%' })
+      return;
+    }
+
     const top = clientY == pageY
     const { search_display, translate, refreshing } = this.data
     if (top && (cY - clientY) > 5 && !translate && !refreshing) {
@@ -202,7 +228,7 @@ Page({
       throttle3(30000, () => {
         refreshTop = cY
       })
-      throttle5(50, () => {
+      throttle4(50, () => {
         this.setData({ refresh_position })
       })
     }
@@ -218,9 +244,9 @@ Page({
     let _ = { clientY, pageY } = e.changedTouches[0]
   },
   touchend() {
+    this.setSidebar()
     const { refresh_position } = this.data
     throttle3 = throttle()
-    throttle4 = throttle()
     if (refresh_position > 270) {
       console.log('refresh')
       this.refresh()

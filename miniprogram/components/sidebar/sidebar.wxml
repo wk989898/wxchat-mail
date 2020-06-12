@@ -9,11 +9,11 @@
   <view class="br" />
   <view>
     <view class="side_item {{type=='main'?'active':''}}" bindtap="select" data-type="main">
-    <image src="/assets/image/main.png" />
-    <text>主要</text>
+      <image src="/assets/image/main.png" />
+      <text>主要</text>
     </view>
     <view class="side_item {{type=='star'?'active':''}}" bindtap="select" data-type="star">
-    <image src="/assets/image/store.png" />
+      <image src="/assets/image/store.png" />
       <text>收藏</text>
     </view>
     <view class="br" />
