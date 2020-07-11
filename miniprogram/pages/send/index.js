@@ -42,14 +42,14 @@ Page({
     else
       this.setData({ [type]: detail.value })
   },
-  onLoad: function (options) {
+  onLoad(options) {
     let { to = '', subject } = options
-    subject = subject ? 'Re: ' + subject : subject
+    subject = subject==void 0 ?'': 'Re: ' + subject
     const account = app.globalData.account
     this.setData({ account, to, subject })
     this.picker()
   },
-  onUnload: function () {
+  onUnload() {
     this.setData({
       account: [],
       account_index: 0,
@@ -59,6 +59,5 @@ Page({
       html: '',
       msg: ''
     })
-  },
-
+  }
 })

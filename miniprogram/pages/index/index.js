@@ -193,7 +193,9 @@ Page({
 
   },
   onShow: function () {
+    try{
     wx.hideHomeButton()
+    }catch{}
   },
   onHide: function () {
 

@@ -4,12 +4,12 @@
  * @param {Function} cb 
  */
 export function throttle() {
-  let timer, _throttle = true
+  let timer, status = true
   return function (time, cb) {
-    if (_throttle) {
-      _throttle = false
+    if (status) {
+      status = false
       timer = setTimeout(() => {
-        _throttle = true
+        status = true
       }, time)
       cb()
     }

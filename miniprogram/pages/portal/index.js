@@ -29,7 +29,9 @@ Page({
   },
   onshow() {
     this.data.status !== 0 && this.portal()
+    try{
     wx.hideHomeButton()
+    }catch(e){}
   },
   onShareAppMessage: function () {
 

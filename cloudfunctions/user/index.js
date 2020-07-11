@@ -13,8 +13,8 @@ exports.main = async (event, context) => {
   return await db.collection('user').where({
     _id: openid,
   }).get().then(async (res) => {
-    const length = res.data.length
-    if (length > 0) return 1
+    const mails = res.data[0].mails||[]
+    if (mails.length>0) return 1
     return 2
   })
 }
