@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-mail-client": "^1.2.7",
+    "node-mail-client": "^1.2.9",
     "wx-server-sdk": "latest"
   }
 }
