@@ -1,5 +1,5 @@
 # Mail
-期末作业
+仅供学习使用
 
 ## 介绍
 仿 gmail app 的小程序   
@@ -31,3 +31,11 @@
 收发邮件将`imap`和`smtp`加以整合,实现了基本需求，如果有需要更多设置，可以fork [node-mail-client](https://github.com/wk989898/mail) 项目加以更改  
 
 考虑到邮箱文件大小，故没有将邮件保存到数据库，每次启动都会拉取邮件，更换邮箱时会重新拉取。为了减少逻辑复杂度（偷懒），所有邮箱和主要邮箱一致，`星标`/`删除`邮件只在本地生效
+
+---  
+### 部分截图  
+<p valign="middle"> 
+   <image style="width:30%" src="https://user-images.githubusercontent.com/55834428/87243102-b7a4e700-c465-11ea-8d97-1c94f03f5ffa.png"/>
+   <image style="width:30%" src="https://user-images.githubusercontent.com/55834428/87243108-c5f30300-c465-11ea-90ad-0e298d9f7277.png"/>
+   <image style="width:30%" src="https://user-images.githubusercontent.com/55834428/87243113-c9868a00-c465-11ea-9972-47cae2175608.png"/>
+</p>
