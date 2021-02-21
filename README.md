@@ -20,13 +20,13 @@
    - 查看所有邮件
 - 下拉加载会有卡顿
 - towxml解析（暂时没找到办法~~欢迎提供建议）
-   - 网页内容不能全屏显示[#145](https://github.com/sbfkcel/towxml/issues/145)
+   - 网页内容不能全屏显示
    - ~~纯文本解析换行问题~~
 - ~~base64内容无法显示~~(貌似已经解决)
 - 重复添加相同邮箱不会报错，但会过滤掉
 
 ## 备注
-感谢[@sbfkcel](https://github.com/sbfkcel) 提供的 [towxml](https://github.com/sbfkcel/towxml) html渲染  
+使用[mp-html](https://github.com/jin-yufeng/mp-html)进行html解析
 
 收发邮件将`imap`和`smtp`加以整合,实现了基本需求，如果有需要更多设置，可以fork [node-mail-client](https://github.com/wk989898/mail) 项目加以更改  
 
