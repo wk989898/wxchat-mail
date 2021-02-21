@@ -132,7 +132,7 @@ Page({
     const t = e.detail
     this.setData({ type: t, sidebar: false })
   },
-  // rotate
+  // icon rotate
   select(e) {
     const index = e.currentTarget.dataset.index
     const { rotate, selectList } = this.data
@@ -168,7 +168,7 @@ Page({
       name: 'receive',
       data: {
         // default
-        num: 2,
+        num: 3,
         account
       }
     }).then(res => {
@@ -282,6 +282,7 @@ Page({
     Top = e.scrollTop
   },
   onReachBottom() {
+    console.log('onReachBottom');
     if (getMore) return;
     console.log('load more ...');
     getMore = true

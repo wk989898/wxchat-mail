@@ -13,5 +13,4 @@ App({
   },
   globalData: { email: [], account: [] },
 
-  towxml: require('/towxml/index')
 })

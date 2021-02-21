@@ -11,6 +11,6 @@
   "dependencies": {
     "moment": "^2.27.0",
     "node-mail-client": "^1.2.9",
-    "wx-server-sdk": "^2.1.2"
+    "wx-server-sdk": "latest"
   }
 }

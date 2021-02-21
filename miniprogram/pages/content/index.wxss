@@ -54,7 +54,7 @@
 }
 
 .c_body {
-  width: 100vw;
+  width: 100vw !important;
 }
 
 .c_re {

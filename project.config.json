@@ -23,9 +23,9 @@
 			"outputPath": ""
 		}
 	},
-	"appid": "",
+	"appid": "wx0e26043a58245cc7",
 	"projectname": "mail",
-	"libVersion": "2.11.3",
+	"libVersion": "2.15.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

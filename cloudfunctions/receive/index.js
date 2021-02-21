@@ -11,6 +11,7 @@ exports.main = async (event, context) => {
   const { name, addr: user, pass, imap, smtp } = account
   const client = new mailClient({ name, user, pass, imap, smtp })
   client.check = 1
+  console.log(type);
   return await client.receive(total => {
     if (type === 'down') {
       // load more

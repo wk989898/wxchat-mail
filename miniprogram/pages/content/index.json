@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "towxml":"/towxml/towxml"
+    "mp-html": "/mp-weixin/index"
   }
 }

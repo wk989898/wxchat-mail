@@ -1,5 +1,4 @@
 // miniprogram/pages/body/index.js
-const app = getApp();
 Page({
   data: {
     subject: '',
@@ -15,10 +14,9 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('mail', function (data) {
       const { body, subject, name, time, to, from } = data
-      let article = app.towxml(body, 'html');
       that.setData({
         subject, name, to, time, from,
-        article, isLoading: false
+        article:body, isLoading: false
       })
     })
   },
@@ -35,26 +33,5 @@ Page({
     wx.navigateTo({
       url: `/pages/send/index?subject=${subject}`
     })
-  },
-  onReady: function () {
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
